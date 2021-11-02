@@ -1,0 +1,48 @@
+name: Publishing
+
+on:
+  push:
+    tags: ['*']
+
+jobs:
+  publish-jar-tag:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '12'
+        distribution: 'zulu'
+
+    - name: Setup Clojure tools
+      uses: DeLaGuardo/setup-clojure@3.5
+      with:
+        cli: 1.10.1.693 # Clojure CLI based on tools.deps
+        lein: 2.9.1     # or use 'latest' to always provision latest version of leiningen
+        boot: 2.8.3     # or use 'latest' to always provision latest version of boot
+
+    - run: sudo apt install zip
+
+    - run: lein uberjar
+
+    - name: Create files to release
+      run: |
+        zip elle-cli-bin-${{ env.TAG }}.zip \
+            target/elle-cli-${{ env.TAG }}-standalone.jar \
+            run-elle-cli \
+            README.md \
+            CHANGELOG.md
+
+    - name: Upload release files
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: elle-cli-bin-${{ env.TAG }}.zip
+        asset_name: elle-cli-bin-${{ env.TAG }}.zip
+        tag: ${{ github.ref }}
+        overwrite: true
+        prerelease: true
