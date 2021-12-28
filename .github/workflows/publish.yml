@@ -2,7 +2,10 @@ name: Publishing
 
 on:
   push:
-    tags: ['*']
+    branches:
+      - master
+    tags:
+      - '*'
 
 jobs:
   publish-jar-tag:
@@ -33,7 +36,6 @@ jobs:
       run: |
         zip elle-cli-bin-${{ env.TAG }}.zip \
             target/elle-cli-${{ env.TAG }}-standalone.jar \
-            run-elle-cli \
             README.md \
             CHANGELOG.md
 
