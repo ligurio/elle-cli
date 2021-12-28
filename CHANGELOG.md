@@ -8,6 +8,10 @@ change log follows the conventions of
 
 [Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.1...HEAD
 
+### Changed
+
+- Bump Knossos version to 0.3.8.
+
 ## [0.1.0] - 2022-01-01
 
 ### Added
