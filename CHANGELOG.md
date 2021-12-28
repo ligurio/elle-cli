@@ -13,7 +13,7 @@ change log follows the conventions of
 - Bump Knossos version to 0.3.8.
 - Bump Elle version to 0.1.3.
 
-## [0.1.0] - 2022-01-01
+## [0.1.0] - 2021-12-25
 
 ### Added
 
@@ -22,4 +22,4 @@ change log follows the conventions of
 - Add integration with Knossos (register, cas-register and mutex checkers).
 - Support histories in EDN and JSON formats.
 
-[0.1.0]: https://github.com/ligurio/elle-cli/compare/797930f5...0.1.0
+[0.1.0]: https://github.com/ligurio/elle-cli/compare/dd0c1874...0.1.0
