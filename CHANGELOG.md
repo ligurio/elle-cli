@@ -11,6 +11,7 @@ change log follows the conventions of
 ### Changed
 
 - Bump Knossos version to 0.3.8.
+- Bump Elle version to 0.1.3.
 
 ## [0.1.0] - 2022-01-01
 
