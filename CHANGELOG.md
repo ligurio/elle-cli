@@ -6,7 +6,7 @@ change log follows the conventions of
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.1...HEAD
+[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.0...HEAD
 
 ### Changed
 
