@@ -95,7 +95,7 @@
    ; Elle-specific options.
    ["-c" "--consistency-models CONSISTENCY-MODELS"
     "(Elle) A collection of consistency models we expect this history to obey."
-    :default [:serializable]]
+    :default [:strict-serializable]]
    ["-a" "--anomalies ANOMALIES"
     "(Elle) A collection of specific anomalies you'd like to look for."
     :default [:G0]]
