@@ -113,7 +113,8 @@
     :default "store"]
    ["-p" "--plot-format PLOT-FORMAT"
     "(Elle) Either 'png' or 'svg'."
-    :default "svg"]
+    :default :svg
+    :parse-fn keyword]
    ["-t" "--plot-timeout PLOT-TIMEOUT"
     "(Elle) How many milliseconds will we wait to render a SCC plot?"
     :default 10]
