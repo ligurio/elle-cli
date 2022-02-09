@@ -21,6 +21,7 @@ $ELLE_CLI_BIN $ELLE_CLI_OPT knossos-mutex histories/knossos/mutex/bad/hazelcast.
 
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.edn
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json
+$ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --plot-format svg
 
 $ELLE_CLI_BIN $ELLE_CLI_OPT jepsen-counter histories/jepsen/counter.edn
 $ELLE_CLI_BIN $ELLE_CLI_OPT jepsen-counter histories/jepsen/counter.json
