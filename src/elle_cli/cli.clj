@@ -64,6 +64,9 @@
                   :key-fn keyword
                   :value-fn value-reader))
 
+(defn str->keywords [s]
+  (mapv keyword (str/split s #",")))
+
 (def models
   {"knossos-register"        knossos-model/register
    "knossos-cas-register"    knossos-model/cas-register
@@ -101,10 +104,12 @@
    ; Elle-specific options.
    ["-c" "--consistency-models CONSISTENCY-MODELS"
     "(Elle) A collection of consistency models we expect this history to obey."
-    :default [:strict-serializable]]
+    :default [:strict-serializable]
+    :parse-fn str->keywords]
    ["-a" "--anomalies ANOMALIES"
     "(Elle) A collection of specific anomalies you'd like to look for."
-    :default [:G0]]
+    :default [:G0]
+    :parse-fn str->keywords]
    ["-s" "--cycle-search-timeout CYCLE-SEARCH-TIMEOUT"
     "(Elle) Number of ms for searching a single SCC for a cycle."
     :default 10]
