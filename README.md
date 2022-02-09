@@ -83,12 +83,13 @@ An Elle's checker for write-read registers. Options are:
   `G2-item`, `G2-item-process`, `G2-item-realtime`, `G2-process`, `GSIa`,
   `GSIb`, `incompatible-order`, `dirty-update`.
 - **cycle-search-timeout** - how many milliseconds are we willing to search a
-  single SCC for a cycle?
+  single SCC for a cycle? Default value is `1000`.
 - **directory** - where to output files, if desired. Default value is `nil`.
 - **plot-format** - either `png` or `svg`. Default value is `svg`.
 - **plot-timeout** - how many milliseconds will we wait to render a SCC plot?
+  Default value is `5000`.
 - **max-plot-bytes** - maximum size of a cycle graph (in bytes of DOT) which
-  we're willing to try and render.
+  we're willing to try and render. Default value is `65536`.
 
 ### elle-list-append
 
@@ -108,12 +109,13 @@ Options are:
   `G2-item`, `G2-item-process`, `G2-item-realtime`, `G2-process`, `GSIa`,
   `GSIb`, `incompatible-order`, `dirty-update`.
 - **cycle-search-timeout** - how many milliseconds are we willing to search a
-  single SCC for a cycle?
+  single SCC for a cycle? Default value is `1000`.
 - **directory** - where to output files, if desired. Default value is `nil`.
 - **plot-format** - either `png` or `svg`. Default value is `svg`.
 - **plot-timeout** - how many milliseconds will we wait to render a SCC plot?
+  Default value is `5000`.
 - **max-plot-bytes** - maximum size of a cycle graph (in bytes of DOT) which
-  we're willing to try and render.
+  we're willing to try and render. Default value is `65536`.
 
 Example of history:
 

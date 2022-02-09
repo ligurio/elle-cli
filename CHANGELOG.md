@@ -20,6 +20,7 @@ change log follows the conventions of
 
 ### Changed
 
+- Update default values for CLI arguments so that they are aligned with Elle's.
 - Bump Jepsen version to 0.2.6.
 - Bump Elle version to 0.1.4.
 - Use :strict-serializable as a default consistency model.
