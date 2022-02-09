@@ -47,9 +47,15 @@
   (if (vector? v) (vl v)))
 
 (defn value-reader [key value]
-  (if (or (= key :type) (= key :f))
-    (keyword value)
-      value))
+  (cond
+    (or (= key :type) (= key :f)) (keyword value)
+    ;; e.g. {:value [[:append :x 1] [:r :y nil]]}
+    (and
+      (= key :value)
+      (vector? value)  (not (empty? value))
+      (vector? (first value)) (not (empty? (first value)))
+      (string? (ffirst value)))    (map #(assoc %1 0 (keyword (first %1))) value)
+    :else value))
 
 (defn read-json-history
   "Takes a path to file and loads a history from it, in JSON format."
