@@ -20,6 +20,8 @@ change log follows the conventions of
 
 ### Changed
 
+- Bump Jepsen version to 0.2.6.
+- Bump Elle version to 0.1.4.
 - Use :strict-serializable as a default consistency model.
 - Fix link for unreleased changes in changelog.
 - Fix publishing workflow.
