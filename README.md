@@ -45,8 +45,8 @@ $ lein uberjar
 Compiling elle_cli.cli
 Created /home/sergeyb/sources/ljepsen/elle-cli/target/elle-cli-0.1.0.jar
 Created /home/sergeyb/sources/ljepsen/elle-cli/target/elle-cli-0.1.0-standalone.jar
-$ java -jar target/elle-cli-0.1.0-standalone.jar --model elle-rw-register paper-example.edn
-paper-example.edn        true
+$ java -jar target/elle-cli-0.1.0-standalone.jar --model elle-rw-register histories/elle/rw-register.json
+histories/elle/rw-register.edn        true
 ```
 
 `elle-cli` converts files with histories in JSON format automatically to
