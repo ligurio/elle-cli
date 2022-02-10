@@ -24,6 +24,7 @@ $ELLE_CLI_BIN $ELLE_CLI_OPT elle-rw-register histories/elle/rw-register.json
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.edn
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --plot-format svg
+$ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --anomalies G-single-process --consistency-models ''
 
 $ELLE_CLI_BIN $ELLE_CLI_OPT jepsen-counter histories/jepsen/counter.edn
 $ELLE_CLI_BIN $ELLE_CLI_OPT jepsen-counter histories/jepsen/counter.json

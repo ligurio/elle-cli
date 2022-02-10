@@ -65,7 +65,9 @@
                   :value-fn value-reader))
 
 (defn str->keywords [s]
-  (mapv keyword (str/split s #",")))
+  (if (empty? s)
+    []
+    (mapv keyword (str/split s #","))))
 
 (def models
   {"knossos-register"        knossos-model/register
