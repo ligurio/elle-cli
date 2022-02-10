@@ -8,8 +8,21 @@ change log follows the conventions of
 
 [Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.0...HEAD
 
+### Added
+
+- Add a test script that runs elle-cli against histories.
+
+### Fixes
+
+- Fixes by passing consistency models and anomalies via CLI (#4).
+- Fix --plot-format CLI argument.
+- Converts the first argument of :value vectors to keyword (#1).
+
 ### Changed
 
+- Use :strict-serializable as a default consistency model.
+- Fix link for unreleased changes in changelog.
+- Fix publishing workflow.
 - Bump Knossos version to 0.3.8.
 - Bump Elle version to 0.1.3.
 
