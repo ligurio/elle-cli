@@ -10,6 +10,7 @@ change log follows the conventions of
 
 ### Added
 
+- Add an example of rw-register history in JSON and EDN formats.
 - Add a test script that runs elle-cli against histories.
 
 ### Fixes
