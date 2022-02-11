@@ -6,14 +6,24 @@ change log follows the conventions of
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.1...HEAD
+
+### Added
+
+### Fixed
+
+### Changed
+
+## [0.1.1] - 2021-02-11
+
+[0.1.1]: https://github.com/ligurio/elle-cli/compare/0.1.0...0.1.1
 
 ### Added
 
 - Add an example of rw-register history in JSON and EDN formats.
 - Add a test script that runs elle-cli against histories.
 
-### Fixes
+### Fixed
 
 - Fixes by passing consistency models and anomalies via CLI (#4).
 - Fix --plot-format CLI argument.
