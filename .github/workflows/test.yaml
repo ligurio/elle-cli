@@ -47,3 +47,21 @@ jobs:
     - run: lein compile
 
     - run: lein uberjar
+
+    - name: Setup test dependencies on Ubuntu
+      run: sudo apt install -y xvfb graphviz
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+
+    - name: Setup test dependencies on macOS
+      run: brew install graphviz
+      if: ${{ matrix.operating-system == 'macOS-latest' }}
+
+    - name: Run regression tests on Ubuntu
+      run: /usr/bin/xvfb-run bash -x ./test.sh
+      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
+      env:
+        DISPLAY: :99.0
+
+    - name: Run regression tests on macOS
+      run: bash -x ./test.sh
+      if: ${{ matrix.operating-system == 'macOS-latest' }}
