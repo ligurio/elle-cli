@@ -91,6 +91,17 @@ An Elle's checker for write-read registers. Options are:
 - **max-plot-bytes** - maximum size of a cycle graph (in bytes of DOT) which
   we're willing to try and render. Default value is `65536`.
 
+Example of history:
+
+```clojure
+{:type :invoke, :f :txn :value [[:w :x 2]],   :process 0, :index 1}
+{:type :ok,     :f :txn :value [[:w :x 2]],   :process 0, :index 2}
+{:type :invoke, :f :txn :value [[:r :x nil]], :process 0, :index 3}
+{:type :ok,     :f :txn :value [[:r :x 3]],   :process 0, :index 4}
+{:type :invoke, :f :txn :value [[:r :x nil]], :process 0, :index 5}
+{:type :ok,     :f :txn :value [[:r :x 2]],   :process 0, :index 6}
+```
+
 ### elle-list-append
 
 An Elle's checker for append and read histories.
