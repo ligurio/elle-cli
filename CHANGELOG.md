@@ -12,6 +12,8 @@ change log follows the conventions of
 
 ### Fixed
 
+- Fix --cycle-search-timeout, --plot-timeout, and --max-plot-bytes CLI arguments
+
 ### Changed
 
 ## [0.1.1] - 2021-02-11
