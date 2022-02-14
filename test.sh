@@ -25,6 +25,9 @@ $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.edn
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --plot-format svg
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --anomalies G-single-process --consistency-models ''
+$ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --cycle-search-timeout 1000
+$ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --plot-timeout 5000
+$ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --max-plot-bytes 65536
 
 $ELLE_CLI_BIN $ELLE_CLI_OPT jepsen-counter histories/jepsen/counter.edn
 $ELLE_CLI_BIN $ELLE_CLI_OPT jepsen-counter histories/jepsen/counter.json

@@ -114,7 +114,8 @@
     :parse-fn str->keywords]
    ["-s" "--cycle-search-timeout CYCLE-SEARCH-TIMEOUT"
     "(Elle) Number of ms for searching a single SCC for a cycle."
-    :default 1000]
+    :default 1000
+    :parse-fn #(Integer/parseInt %)]
    ["-d" "--directory DIRECTORY"
     "(Elle) Where to output files, if desired."
     :default "store"]
@@ -124,10 +125,12 @@
     :parse-fn keyword]
    ["-t" "--plot-timeout PLOT-TIMEOUT"
     "(Elle) How many milliseconds will we wait to render a SCC plot?"
-    :default 5000]
+    :default 5000
+    :parse-fn #(Integer/parseInt %)]
    ["-b" "--max-plot-bytes MAX-PLOT-BYTES"
     "(Elle) Maximum size of a cycle graph (in bytes of DOT)."
-    :default 65536]
+    :default 65536
+    :parse-fn #(Integer/parseInt %)]
 
    ; Jepsen-specific options.
    ; None.
