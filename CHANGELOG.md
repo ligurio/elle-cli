@@ -13,6 +13,7 @@ change log follows the conventions of
 ### Fixed
 
 - Fix --cycle-search-timeout, --plot-timeout, and --max-plot-bytes CLI arguments
+- Fix default value for --directory CLI argument
 
 ### Changed
 
