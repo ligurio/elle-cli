@@ -118,7 +118,7 @@
     :parse-fn #(Integer/parseInt %)]
    ["-d" "--directory DIRECTORY"
     "(Elle) Where to output files, if desired."
-    :default "store"]
+    :default nil]
    ["-p" "--plot-format PLOT-FORMAT"
     "(Elle) Either 'png' or 'svg'."
     :default :svg
