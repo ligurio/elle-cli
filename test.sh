@@ -2,7 +2,7 @@
 
 set -eu
 
-ELLE_CLI_VERSION="0.1.1"
+ELLE_CLI_VERSION="0.1.2"
 ELLE_CLI_BIN="java -jar target/elle-cli-${ELLE_CLI_VERSION}-standalone.jar"
 ELLE_CLI_OPT="--model"
 
