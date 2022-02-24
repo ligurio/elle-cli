@@ -17,7 +17,7 @@ change log follows the conventions of
 
 ### Changed
 
-## [0.1.1] - 2021-02-11
+## [0.1.1] - 2022-02-11
 
 [0.1.1]: https://github.com/ligurio/elle-cli/compare/0.1.0...0.1.1
 
