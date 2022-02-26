@@ -12,6 +12,8 @@ change log follows the conventions of
 
 ### Fixed
 
+- Fixed defaults for anomalies in a README.
+
 ### Changed
 
 ## [0.1.2] - 2022-02-23
