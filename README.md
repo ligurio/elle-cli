@@ -273,7 +273,7 @@ Example of history:
 
 ## License
 
-Copyright © 2021 Sergey Bronnikov
+Copyright © 2021-2022 Sergey Bronnikov
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
