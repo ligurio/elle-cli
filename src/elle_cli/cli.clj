@@ -163,10 +163,9 @@
 
 (defn check-history
   "Check a specified history according to model specified by model name"
-  [model-name history options]
+  [model-name history options checker-group]
 
-  (let [checker-group (first (str/split model-name #"-"))
-        checker-fn (get models model-name)]
+  (let [checker-fn (get models model-name)]
     (case checker-group
        "knossos" (competition/analysis (checker-fn) history)
        "elle" (checker-fn options history)
@@ -203,8 +202,9 @@
           (throw (Exception. "File not found")))
 
         (let [read-history  (or read-history (read-fn-by-extension filepath))
+              checker-group (first (str/split model-name #"-"))
               history       (read-history filepath)
-              analysis      (check-history model-name history options)]
+              analysis      (check-history model-name history options checker-group)]
 
           (if (true? (:verbose options))
             (json/pprint analysis)
