@@ -26,7 +26,7 @@
   initial [ or ( is present, loads the entire file in one go as a collection,
   expecting it to be a collection of op maps. If the initial character is {,
   loads it piecewise as op maps."
-  [filepath]
+  [filepath checker-group]
   (let [h (with-open [r (PushbackReader. (io/reader filepath))]
             (->> (repeatedly #(edn/read {:eof nil} r))
                  (take-while identity)
@@ -36,8 +36,11 @@
                    (sequential? (first h)))
             (vec (first h))
             h)]
-    ; Normalize ops.
-    (history/parse-ops h)))
+    ; Normalize ops for Knossos, see src/knossos/cli.clj:read-history.
+    h (if (= checker-group "knossos")
+        (history/parse-ops h)
+        h)
+    ))
 
 (defn vl
   [v]
@@ -59,7 +62,7 @@
 
 (defn read-json-history
   "Takes a path to file and loads a history from it, in JSON format."
-  [filepath]
+  [filepath checker-group]
   (json/read-str (slurp filepath)
                   :key-fn keyword
                   :value-fn value-reader))
@@ -203,7 +206,7 @@
 
         (let [read-history  (or read-history (read-fn-by-extension filepath))
               checker-group (first (str/split model-name #"-"))
-              history       (read-history filepath)
+              history       (read-history filepath checker-group)
               analysis      (check-history model-name history options checker-group)]
 
           (if (true? (:verbose options))
