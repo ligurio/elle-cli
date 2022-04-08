@@ -13,6 +13,7 @@ change log follows the conventions of
 ### Fixed
 
 - Fixed defaults for anomalies in a README.
+- Fixed processing of Elle's list-append histories (#30).
 
 ### Changed
 

@@ -28,6 +28,7 @@ $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json -
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --cycle-search-timeout 1000
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --plot-timeout 5000
 $ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/paper-example.json --max-plot-bytes 65536
+$ELLE_CLI_BIN $ELLE_CLI_OPT elle-list-append histories/elle/list-append-gh-30.edn --consistency-models serializable
 
 $ELLE_CLI_BIN $ELLE_CLI_OPT jepsen-counter histories/jepsen/counter.edn
 $ELLE_CLI_BIN $ELLE_CLI_OPT jepsen-counter histories/jepsen/counter.json
