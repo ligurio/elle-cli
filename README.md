@@ -373,6 +373,25 @@ Example of history:
                                            430}}
 ```
 
+### sequential
+
+A standalone checker for a sequential consistency, it checks that the effective
+order of transactions should be consistent with the order on every client. Any
+execution is the same as if all `read` and `write` ops were executed in some
+global ordering, and the ops of each client process appear in the order
+specified by its program. If a process order enforces that `x` must be visible
+before `y`, we should always read both or neither.
+
+To verify this, we have a single client perform a sequence of independent
+transactions, inserting `k1`, `k2`, ..., `kn` into different tables.
+Concurrently, a different client attempts to read each of `kn`, ..., `k2`, `k1`
+in turn. Because all inserts occur from the same process, they must also be
+visible to any single process in that order. This implies that once a process
+observes `kn`, any subsequent read must see `kn − 1`, and by induction, all
+smaller keys.
+
+Like G2 and the bank tests, this test does not verify consistency *in general*.
+
 ## License
 
 Copyright © 2021-2022 Sergey Bronnikov

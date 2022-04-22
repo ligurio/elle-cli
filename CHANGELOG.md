@@ -11,6 +11,7 @@ change log follows the conventions of
 ### Added
 
 - Add a checker for comments test (#32).
+- Add a checker for sequential test (#33).
 
 ### Fixed
 
