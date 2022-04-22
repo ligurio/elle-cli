@@ -7,7 +7,6 @@
             [clojure.data.json :as json]
             [clojure.pprint :refer [pprint]]
             [clojure.tools.logging :refer [info warn]]
-            [jepsen.checker :as checker]
             [jepsen [checker :as jepsen-model]]
             [jepsen.tests.bank :as jepsen-bank]
             [jepsen.tests.long-fork :as jepsen-long-fork]
@@ -173,9 +172,9 @@
        "knossos" (competition/analysis (checker-fn) history)
        "elle" (checker-fn options history)
        "jepsen" (case model-name
-                  "jepsen-bank" (checker/check-safe (checker-fn {:negative-balances? true}) nil history)
-                  "jepsen-set-full" (checker/check-safe (checker-fn) nil history)
-                  "jepsen-counter" (checker/check-safe (checker-fn) nil history)
+                  "jepsen-bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
+                  "jepsen-set-full" (jepsen-model/check-safe (checker-fn) nil history)
+                  "jepsen-counter" (jepsen-model/check-safe (checker-fn) nil history)
                  ))))
 
 (defn read-fn-by-extension
