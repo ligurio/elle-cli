@@ -1,0 +1,10 @@
+{:index 1, :type :invoke :f :read   :value nil}
+{:index 2, :type :invoke :f :write  :value 425}
+{:index 3, :type :ok     :f :write  :value 425}
+{:index 4, :type :invoke :f :write  :value 430}
+{:index 5, :type :ok     :f :write  :value 430}
+{:index 6, :type :ok     :f :read   :value #{2 10 15 20 34 35 38 42 43 47 51 53 59 61 71 72 82 88 89
+                                           113 119 123 129 132 145 146 163 167 176 206 216 224 230
+                                           238 243 244 255 260 292 294 299 312 316 324 325 327 330
+                                           350 356 359 360 361 363 366 367 371 376 403 410 419 422
+                                           430}}

@@ -345,6 +345,34 @@ Example of history:
 {:type :invoke, :f :release, :process 0, :time 679093895, :index 10}
 ```
 
+### comments
+
+A custom checker for a comments histories.
+
+Imagine an application which has a sequential stream of comments. Users make
+comments by inserting new rows into a table. Because each request is
+load-balanced to a different server, two transactions from the same user may
+execute on different nodes. Now imagine that a user makes a comment `C1` in
+transaction `T1`. `T1` completes successfully. The user then realizes they made
+a mistake, and posts a correction comment `C2`, in transaction `T2`. Meanwhile,
+someone attempts to read all comments in a third transaction `T3`, concurrent
+with both `T1` and `T2`.
+
+Example of history:
+
+```clojure
+{:index 1, :type :invoke :f :read   :value nil}
+{:index 2, :type :invoke :f :write  :value 425}
+{:index 3, :type :ok     :f :write  :value 425}
+{:index 4, :type :invoke :f :write  :value 430}
+{:index 5, :type :ok     :f :write  :value 430}
+{:index 6, :type :ok     :f :read   :value #{2 10 15 20 34 35 38 42 43 47 51 53 59 61 71 72 82 88 89
+                                           113 119 123 129 132 145 146 163 167 176 206 216 224 230
+                                           238 243 244 255 260 292 294 299 312 316 324 325 327 330
+                                           350 356 359 360 361 363 366 367 371 376 403 410 419 422
+                                           430}}
+```
+
 ## License
 
 Copyright © 2021-2022 Sergey Bronnikov

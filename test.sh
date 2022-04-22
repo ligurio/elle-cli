@@ -60,4 +60,5 @@ run_test 1 "--model set-full histories/jepsen/set_full.json"
 run_test 1 "--model bank histories/jepsen/bank.edn"
 run_test 1 "--model bank histories/jepsen/bank.json"
 
+
 exit $suite_status

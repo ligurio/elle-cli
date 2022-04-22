@@ -11,6 +11,8 @@
             [jepsen [checker :as jepsen-model]]
             [jepsen.tests.bank :as jepsen-bank]
             [jepsen.tests.long-fork :as jepsen-long-fork]
+            [jepsen.independent :as independent]
+            [elle-cli.comments :as comments-model]
             [elle.list-append :as elle-list-append]
             [elle.rw-register :as elle-rw-register]
             [elle.consistency-model :as elle-consistency-model]
@@ -86,6 +88,7 @@
    "counter"                 jepsen-model/counter
    "set"                     jepsen-model/set
    "set-full"                jepsen-model/set-full
+   "comments"                comments-model/checker
    "elle-rw-register"        elle-rw-register/check
    "elle-list-append"        elle-list-append/check
    "rw-register"             elle-rw-register/check
@@ -164,6 +167,7 @@
         "  long-fork - a checker for an anomaly in parallel snapshot isolation."
         "  cas-register - a checker for CAS (Compare-And-Set) registers."
         "  mutex - a checker for a mutex histories."
+        "  comments - a custom checker for a comments histories (experimental)."
         ""
         "Options:"
         options-summary
@@ -184,6 +188,7 @@
        "knossos-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "knossos-cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "knossos-mutex" (competition/analysis (checker-fn) (history/parse-ops history))
+       "comments" ((independent/checker (checker-fn)) (history/parse-ops history))
        "list-append" (checker-fn options history)
        "rw-register" (checker-fn options history)
        "elle-list-append" (checker-fn options history)
