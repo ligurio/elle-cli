@@ -45,7 +45,7 @@ $ lein uberjar
 Compiling elle_cli.cli
 Created /home/sergeyb/sources/ljepsen/elle-cli/target/elle-cli-0.1.2.jar
 Created /home/sergeyb/sources/ljepsen/elle-cli/target/elle-cli-0.1.2-standalone.jar
-$ java -jar target/elle-cli-0.1.2-standalone.jar --model elle-rw-register histories/elle/rw-register.json
+$ java -jar target/elle-cli-0.1.2-standalone.jar --model rw-register histories/elle/rw-register.json
 histories/elle/rw-register.edn        true
 ```
 
@@ -66,7 +66,7 @@ transform between JSON and EDN, and then pass file in EDN format to `elle-cli`.
 
 ## Supported models
 
-### elle-rw-register
+### rw-register
 
 An Elle's checker for write-read registers. Options are:
 
@@ -102,7 +102,7 @@ Example of history:
 {:type :ok,     :f :txn :value [[:r :x 2]],   :process 0, :index 6}
 ```
 
-### elle-list-append
+### list-append
 
 An Elle's checker for append and read histories.
 Options are:
@@ -139,7 +139,7 @@ Example of history:
 {:index 7 :type :ok      :value [[:append 250 10] [:r 253 [1 3 4]] [:r 255 [2 3 4 5]] [:append 256 3]]}
 ```
 
-### jepsen-bank
+### bank
 
 A Jepsen's checker for bank histories. Option `negative-balances` is always
 enabled.
@@ -162,7 +162,7 @@ Example of history:
 {:type :invoke, :f :read,     :process 0, :time 13210921850, :index 46}
 ```
 
-### jepsen-counter
+### counter
 
 A Jepsen's checker for counter histories. A counter starts at zero; add
 operations should increment it by that much, and reads should return the
@@ -182,13 +182,13 @@ Example of history:
 {:type :ok,     :f :add, :value 1, :op-index 3, :process 0, :time 11040666263, :index 5}
 ```
 
-### jepsen-long-fork
+### long-fork
 
 A Jepsen's checker for an anomaly in parallel snapshot isolation (but which is
 prohibited in normal snapshot isolation). In long-fork, concurrent write
 transactions are observed in conflicting order.
 
-### jepsen-set
+### set
 
 A Jepsen's checker for a set histories. Given a set of `:add` operations
 followed by a final `:read`, verifies that every successfully added element is
@@ -206,7 +206,7 @@ Example of history:
 {:type :ok,     :f :add, :value [0 2], :process 0, :time 11209256522, :index 5}
 ```
 
-### jepsen-set-full
+### set-full
 
 A Jepsen's checker for a set histories. It is a more rigorous set analysis. We
 allow `:add` operations which add a single element, and `:reads` which return
@@ -226,12 +226,12 @@ all elements present at that time.
 {:type :invoke, :f :add, :value [0 5], :process 0, :time 11786251931, :index 10}
 ```
 
-### knossos-register
+### register
 
 A Knossos checker for write-read registers. By default `competition/analysis`
 algorithm is used.
 
-### knossos-cas-register
+### cas-register
 
 A Knossos checker for CAS (Compare-And-Set) registers. By default
 `competition/analysis` algorithm is used.
@@ -249,7 +249,7 @@ Example of history:
 {:process 4, :type :ok,     :f :read,  :value 2}
 ```
 
-### knossos-mutex
+### mutex
 
 A Knossos checker for a mutex histories. Applicable to a test with single mutex
 responding to `:acquire` and `:release` messages. By default

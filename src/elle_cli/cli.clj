@@ -72,13 +72,23 @@
   {"knossos-register"        knossos-model/register
    "knossos-cas-register"    knossos-model/cas-register
    "knossos-mutex"           knossos-model/mutex
+   "register"                knossos-model/register
+   "cas-register"            knossos-model/cas-register
+   "mutex"                   knossos-model/mutex
    "jepsen-bank"             jepsen-bank/checker
    "jepsen-long-fork"        jepsen-long-fork/checker
    "jepsen-counter"          jepsen-model/counter
    "jepsen-set"              jepsen-model/set
    "jepsen-set-full"         jepsen-model/set-full
+   "bank"                    jepsen-bank/checker
+   "long-fork"               jepsen-long-fork/checker
+   "counter"                 jepsen-model/counter
+   "set"                     jepsen-model/set
+   "set-full"                jepsen-model/set-full
    "elle-rw-register"        elle-rw-register/check
-   "elle-list-append"        elle-list-append/check})
+   "elle-list-append"        elle-list-append/check
+   "rw-register"             elle-rw-register/check
+   "list-append"             elle-list-append/check})
 
 (def history-read-fn
   {"edn"        read-edn-history
@@ -144,16 +154,16 @@
         "Usage: elle-cli -m model [options] files"
         ""
         "Supported models:"
-        "  elle-rw-register - an Elle's checker for write-read registers."
-        "  elle-list-append - an Elle's checker for append and read histories."
-        "  jepsen-bank - a Jepsen's checker for bank histories."
-        "  jepsen-counter - a Jepsen's checker for counter histories."
-        "  jepsen-set - a Jepsen's checker for a set histories."
-        "  jepsen-set-full - a Jepsen's checker for a set histories."
-        "  jepsen-long-fork - a Jepsen's checker for an anomaly in parallel snapshot isolation."
-        "  knossos-register - a Knossos checker for write-read registers."
-        "  knossos-cas-register - a Knossos checker for CAS (Compare-And-Set) registers."
-        "  knossos-mutex - a Knossos checker for a mutex histories."
+        "  rw-register - an checker for write-read registers."
+        "  list-append - an checker for append and read histories."
+        "  bank - a checker for bank histories."
+        "  counter - a checker for counter histories."
+        "  set - a checker for a set histories."
+        "  set-full - a checker for a set histories."
+        "  long-fork - a checker for an anomaly in parallel snapshot isolation."
+        "  register - a checker for write-read registers."
+        "  cas-register - a checker for CAS (Compare-And-Set) registers."
+        "  mutex - a checker for a mutex histories."
         ""
         "Options:"
         options-summary
@@ -168,11 +178,19 @@
     (case model-name
        ; Operations in a histories passed to a Knossos additionally normalized,
        ; see src/knossos/cli.clj:read-history.
+       "register" (competition/analysis (checker-fn) (history/parse-ops history))
+       "cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
+       "mutex" (competition/analysis (checker-fn) (history/parse-ops history))
        "knossos-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "knossos-cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "knossos-mutex" (competition/analysis (checker-fn) (history/parse-ops history))
+       "list-append" (checker-fn options history)
+       "rw-register" (checker-fn options history)
        "elle-list-append" (checker-fn options history)
        "elle-rw-register" (checker-fn options history)
+       "bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
+       "counter" (jepsen-model/check-safe (checker-fn) nil history)
+       "set-full" (jepsen-model/check-safe (checker-fn) nil history)
        "jepsen-bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
        "jepsen-counter" (jepsen-model/check-safe (checker-fn) nil history)
        "jepsen-set-full" (jepsen-model/check-safe (checker-fn) nil history))))
