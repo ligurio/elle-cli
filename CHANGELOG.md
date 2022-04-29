@@ -30,6 +30,7 @@ change log follows the conventions of
 - Checker names have been removed in models name. (#38)
 - Model "register" is planned to be removed in next releases. It is removed in
   documentation and usage and it is recommended to use "rw-register" instead. (#42)
+- Updated test descriptions in a README. (#37)
 
 ## [0.1.2] - 2022-02-23
 

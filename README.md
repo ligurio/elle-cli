@@ -104,7 +104,22 @@ Example of history:
 
 ### list-append
 
-An Elle's checker for append and read histories.
+An Elle's checker for append and read histories. It checks for dependency
+cycles in append/read transactions.
+
+The *append* test models the database as a collection of named lists, and
+performs transactions comprised of read and append operations. A read returns
+the value of a particular list, and an append adds a single unique element to
+the end of a particular list. We derive ordering dependencies between these
+transactions, and search for cycles in that dependency graph to identify
+consistency anomalies.
+
+In terms of Elle values in operation are lists of integers. Each operation
+performs a transaction, comprised of micro-operations which are either reads of
+some value (returning the entire list) or appends (adding a single number to
+whatever the present value of the given list is). We detect cycles in these
+transactions using Elle's cycle-detection system.
+
 Options are:
 
 - **consistency-models** - a collection of consistency models we expect this
@@ -144,6 +159,13 @@ Example of history:
 A Jepsen's checker for bank histories. Option `negative-balances` is always
 enabled.
 
+Test simulates a set of bank accounts, one per row, and transfers money
+between them at random, ensuring that no account goes negative. Under snapshot
+isolation, one can prove that transfers must serialize, and the sum of all
+accounts is conserved. Meanwhile, read transactions select the current balance
+of all accounts. Snapshot isolation ensures those reads see a consistent
+snapshot, which implies the sum of accounts in any read is constant as well.
+
 Example of history:
 
 ```clojure
@@ -164,12 +186,13 @@ Example of history:
 
 ### counter
 
-A Jepsen's checker for counter histories. A counter starts at zero; add
-operations should increment it by that much, and reads should return the
-present value. This checker validates that at each read, the value is greater
-than the sum of all `:ok` increments, and lower than the sum of all attempted
-increments. Note that this counter verifier assumes the value monotonically
-increases and decrements are not allowed.
+A Jepsen's checker for counter histories.
+
+In the counter test, we create a single record with a counter field, and
+execute concurrent increments and reads of that counter. We look for cases,
+where the observed value is greater than the sum of all `:ok` increments, and
+lower than the sum of all attempted increments. Note that this counter verifier
+assumes the value monotonically increases and decrements are not allowed.
 
 Example of history:
 
@@ -185,13 +208,65 @@ Example of history:
 ### long-fork
 
 A Jepsen's checker for an anomaly in parallel snapshot isolation (but which is
-prohibited in normal snapshot isolation). In long-fork, concurrent write
+prohibited in normal snapshot isolation). In *long-fork*, concurrent write
 transactions are observed in conflicting order.
+
+For performance reasons, some database systems implement parallel
+snapshot isolation, rather than standard snapshot isolation. Parallel
+snapshot isolation allows an anomaly prevented by standard SI: a long
+fork, in which non-conflicting write transactions may be visible in
+incompatible orders. As an example, consider four transactions over an
+empty initial state:
+
+```
+(write x 1)
+(write y 1)
+(read x nil) (read y 1)
+(read x 1) (read y nil)
+```
+
+Here, we insert two records, `x` and `y`. In a serializable system, one record
+should have been inserted before the other. However, transaction 3 observes `y`
+inserted before `x`, and transaction 4 observes `x` inserted before `y`. These
+observations are incompatible with a total order of inserts.
+
+To test for this behavior, we insert a sequence of unique keys, and
+concurrently query for small batches of those keys, hoping to observe a pair of
+states in which the implicit order of insertion conflicts.
+
+Long fork is an anomaly prohibited by snapshot isolation, but allowed by the
+slightly weaker model parallel snapshot isolation. In a long fork, updates to
+independent keys become visible to reads in a way that isn't consistent with a
+total order of those updates. For instance:
+
+```
+T1: w(x, 1)
+T2: w(y, 1)
+T3: r(x, 1), r(y, nil)
+T4: r(x, nil), r(y, 1)
+```
+
+Under snapshot isolation, T1 and T2 may execute concurrently, because their
+write sets don't intersect. However, every transaction should observe a
+snapshot consistent with applying those writes in some order. Here, T3 implies
+T1 happened before T2, but T4 implies the opposite. We run an n-key
+generalization of these transactions continuously in our long fork test, and
+look for cases where some keys are updated out of order.
+
+In snapshot isolated systems, reads should observe a state consistent with a
+total order of transactions. A long fork anomaly occurs when a pair of reads
+observes contradictory orders of events on distinct records - for instance, T1
+observing record x before record y was created, and T2 observing y before x. In
+the long fork test, we insert unique rows into a table, and query small groups
+of those rows, looking for cases where two reads observe incompatible orders.
 
 ### set
 
-A Jepsen's checker for a set histories. Given a set of `:add` operations
-followed by a final `:read`, verifies that every successfully added element is
+A Jepsen's checker for a set histories.
+
+Given a set of `:add` operations, that inserts a sequence of unique records
+into a table, followed by a final `:read`, that concurrently attempts to read
+all of those records back, verifies that every successfully added element is
 present in the read, and that the read contains only elements for which an add
 was attempted.
 
