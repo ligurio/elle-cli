@@ -17,6 +17,8 @@ change log follows the conventions of
 
 ### Changed
 
+- Checker names have been removed in models name. (#38)
+
 ## [0.1.2] - 2022-02-23
 
 [0.1.2]: https://github.com/ligurio/elle-cli/compare/0.1.1...0.1.2
