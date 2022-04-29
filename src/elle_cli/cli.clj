@@ -161,7 +161,6 @@
         "  set - a checker for a set histories."
         "  set-full - a checker for a set histories."
         "  long-fork - a checker for an anomaly in parallel snapshot isolation."
-        "  register - a checker for write-read registers."
         "  cas-register - a checker for CAS (Compare-And-Set) registers."
         "  mutex - a checker for a mutex histories."
         ""

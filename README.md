@@ -226,11 +226,6 @@ all elements present at that time.
 {:type :invoke, :f :add, :value [0 5], :process 0, :time 11786251931, :index 10}
 ```
 
-### register
-
-A Knossos checker for write-read registers. By default `competition/analysis`
-algorithm is used.
-
 ### cas-register
 
 A Knossos checker for CAS (Compare-And-Set) registers. By default
