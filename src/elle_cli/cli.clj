@@ -165,17 +165,18 @@
 
 (defn check-history
   "Check a specified history according to model specified by model name"
-  [model-name history options checker-group]
+  [model-name history options]
 
   (let [checker-fn (get models model-name)]
-    (case checker-group
-       "knossos" (competition/analysis (checker-fn) history)
-       "elle" (checker-fn options history)
-       "jepsen" (case model-name
-                  "jepsen-bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
-                  "jepsen-set-full" (jepsen-model/check-safe (checker-fn) nil history)
-                  "jepsen-counter" (jepsen-model/check-safe (checker-fn) nil history)
-                 ))))
+    (case model-name
+       "knossos-register" (competition/analysis (checker-fn) history)
+       "knossos-cas-register" (competition/analysis (checker-fn) history)
+       "knossos-mutex" (competition/analysis (checker-fn) history)
+       "elle-list-append" (checker-fn options history)
+       "elle-rw-register" (checker-fn options history)
+       "jepsen-bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
+       "jepsen-counter" (jepsen-model/check-safe (checker-fn) nil history)
+       "jepsen-set-full" (jepsen-model/check-safe (checker-fn) nil history))))
 
 (defn read-fn-by-extension
   "Take a path to file and returns a function for reading that file."
@@ -206,7 +207,7 @@
         (let [read-history  (or read-history (read-fn-by-extension filepath))
               checker-group (first (str/split model-name #"-"))
               history       (read-history filepath checker-group)
-              analysis      (check-history model-name history options checker-group)]
+              analysis      (check-history model-name history options)]
 
           (if (true? (:verbose options))
             (json/pprint analysis)
