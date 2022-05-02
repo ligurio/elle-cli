@@ -25,7 +25,7 @@
   initial [ or ( is present, loads the entire file in one go as a collection,
   expecting it to be a collection of op maps. If the initial character is {,
   loads it piecewise as op maps."
-  [filepath checker-group]
+  [filepath]
   (let [h (with-open [r (PushbackReader. (io/reader filepath))]
             (->> (repeatedly #(edn/read {:eof nil} r))
                  (take-while identity)
@@ -35,10 +35,7 @@
                    (sequential? (first h)))
             (vec (first h))
             h)]
-    ; Normalize ops for Knossos, see src/knossos/cli.clj:read-history.
-    h (if (= checker-group "knossos")
-        (history/parse-ops h)
-        h)
+    h
     ))
 
 (defn vl
@@ -61,7 +58,7 @@
 
 (defn read-json-history
   "Takes a path to file and loads a history from it, in JSON format."
-  [filepath checker-group]
+  [filepath]
   (json/read-str (slurp filepath)
                   :key-fn keyword
                   :value-fn value-reader))
@@ -169,9 +166,11 @@
 
   (let [checker-fn (get models model-name)]
     (case model-name
-       "knossos-register" (competition/analysis (checker-fn) history)
-       "knossos-cas-register" (competition/analysis (checker-fn) history)
-       "knossos-mutex" (competition/analysis (checker-fn) history)
+       ; Operations in a histories passed to a Knossos additionally normalized,
+       ; see src/knossos/cli.clj:read-history.
+       "knossos-register" (competition/analysis (checker-fn) (history/parse-ops history))
+       "knossos-cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
+       "knossos-mutex" (competition/analysis (checker-fn) (history/parse-ops history))
        "elle-list-append" (checker-fn options history)
        "elle-rw-register" (checker-fn options history)
        "jepsen-bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
@@ -205,8 +204,7 @@
           (throw (Exception. "File not found")))
 
         (let [read-history  (or read-history (read-fn-by-extension filepath))
-              checker-group (first (str/split model-name #"-"))
-              history       (read-history filepath checker-group)
+              history       (read-history filepath)
               analysis      (check-history model-name history options)]
 
           (if (true? (:verbose options))
