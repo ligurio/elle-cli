@@ -55,7 +55,7 @@ check, followed by a tab, and then whether the history was valid. There are
 three validity states:
 
 - `true`      means the history was valid
-- `false`     means the history was valid
+- `false`     means the history was invalid
 - `:unknown`  means checker was unable to complete the analysis; e.g. it ran
               out of memory.
 
