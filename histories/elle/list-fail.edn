@@ -1,0 +1,17 @@
+; P1 and P2 read x and see an empty list
+{:process 1, :index 1,  :type :invoke, :value [[:r x]]}
+{:process 1, :index 2,  :type :ok,     :value [[:r x []]]}
+{:process 2, :index 3,  :type :invoke, :value [[:r x]]}
+{:process 2, :index 4,  :type :ok,     :value [[:r x []]]}
+
+; P1 appends 1, P2 appends 2
+{:process 1, :index 5   :type :invoke, :value [[:append x 1]]}
+{:process 2, :index 6   :type :invoke, :value [[:append x 2]]}
+{:process 1, :index 5   :type :ok,     :value [[:append x 1]]}
+{:process 2, :index 6   :type :ok,     :value [[:append x 2]]}
+
+; P1 and P2 see a two list with the same element, 1 and 2, but in different order
+{:process 1, :index 7,  :type :invoke, :value [[:r x]]}
+{:process 1, :index 8,  :type :ok,     :value [[:r x [1 2]]]}
+{:process 2, :index 9,  :type :invoke, :value [[:r x]]}
+{:process 2, :index 10, :type :ok,     :value [[:r x [2 1]]]}

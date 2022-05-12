@@ -1,0 +1,13 @@
+; Two processes read initial value nil
+{:process 1, :type :invoke, :f :read, :value nil}
+{:process 1, :type :ok,     :f :read, :value nil}
+{:process 2, :type :invoke, :f :read, :value nil}
+{:process 2, :type :ok,     :f :read, :value nil}
+
+; P1 does CAS(nil, 1) and succeeds
+{:process 1, :type :invoke, :f :cas,  :value [nil 1]}
+{:process 1, :type :ok,     :f :cas,  :value [nil 1]}
+
+; P2 does CAS(nil, 2) and fails
+{:process 2, :type :invoke, :f :cas,  :value [nil 2]}
+{:process 2, :type :fail,   :f :cas,  :value [nil 2]}
