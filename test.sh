@@ -3,7 +3,7 @@
 set -eu
 
 ELLE_CLI_VERSION="0.1.3"
-ELLE_CLI_BIN="java -jar target/elle-cli-${ELLE_CLI_VERSION}-standalone.jar"
+ELLE_CLI_BIN="java -Djava.awt.headless=true -jar target/elle-cli-${ELLE_CLI_VERSION}-standalone.jar"
 ELLE_CLI_OPT="--model"
 
 $ELLE_CLI_BIN $ELLE_CLI_OPT cas-register histories/knossos/cas-register/bad/bad-analysis.edn

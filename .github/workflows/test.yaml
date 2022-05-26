@@ -59,8 +59,6 @@ jobs:
     - name: Run regression tests on Ubuntu
       run: /usr/bin/xvfb-run bash -x ./test.sh
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-      env:
-        DISPLAY: :99.0
 
     - name: Run regression tests on macOS
       run: bash -x ./test.sh
