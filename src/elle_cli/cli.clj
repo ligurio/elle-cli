@@ -1,3 +1,4 @@
+(System/setProperty "java.awt.headless" "true")
 (ns elle_cli.cli
   "History verification in CLI"
   (:require [clojure.java.io :as io]

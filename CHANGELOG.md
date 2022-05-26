@@ -12,6 +12,8 @@ change log follows the conventions of
 
 ### Fixed
 
+- Fix setting of headless mode (#50).
+
 ### Changed
 
 ## [0.1.3] - 2022-05-11
