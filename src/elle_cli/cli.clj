@@ -202,6 +202,7 @@
 
 (defn -main
   [& args]
+  (println "HEADLESS? " (System/getProperty "java.awt.headless"))
   (try
     (let [{:keys [options arguments summary errors]} (cli/parse-opts args opts)
           model-name (:model options)
