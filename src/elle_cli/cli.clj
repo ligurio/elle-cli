@@ -201,12 +201,16 @@
   (let [ext (second (re-find #"\.([a-zA-Z0-9]+)$" filepath))]
     (get history-read-fn ext)))
 
+(defn lazy-contains? [coll key]
+    (boolean (some #(= % key) coll)))
+
 (defn -main
   [& args]
   (try
     (let [{:keys [options arguments summary errors]} (cli/parse-opts args opts)
           model-name (:model options)
           read-history (:format options)
+          results (atom (hash-map))
           help (:help options)]
       (when-not (empty? errors)
         (doseq [e errors]
@@ -223,13 +227,16 @@
 
         (let [read-history  (or read-history (read-fn-by-extension filepath))
               history       (read-history filepath)
-              analysis      (check-history model-name history options)]
+              analysis      (check-history model-name history options)
+              validness     (:valid? analysis)]
+
+        (swap! results assoc filepath validness)
 
         (if (true? (:verbose options))
           (json/pprint analysis)
-          (println filepath "\t" (:valid? analysis)))))
+          (println filepath "\t" validness))))
 
-      (System/exit 0))
+      (System/exit ({true 1 false 0} (lazy-contains? (vals @results) false))))
 
     (catch Throwable t
       (println)

@@ -13,6 +13,7 @@ change log follows the conventions of
 ### Fixed
 
 - Fix setting of headless mode (#50).
+- Fix exit code when history is not valid (#53).
 
 ### Changed
 

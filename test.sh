@@ -15,9 +15,11 @@ run_test() {
     test_status="NOT OK"
     cmd="$ELLE_CLI_BIN $elle_cli_opts"
     test_output=$($cmd)
+    rc=$?
     res=$(echo $test_output | cut -d" " -f2)
-    if { [ "X$res" = Xfalse ] && [ "$exit_code" -ne 0 ]; } ||
-       { [ "X$res" = Xtrue ] && [ "$exit_code" -eq 0 ]; }; then
+    if { { [ "X$res" = Xfalse ] && [ "$exit_code" -ne 0 ]; } ||
+         { [ "X$res" = Xtrue ] && [ "$exit_code" -eq 0 ]; }; } &&
+       [ "$exit_code" -eq $rc ]; then
         test_status="OK"
     else
         suite_status=1
