@@ -225,9 +225,9 @@
               history       (read-history filepath)
               analysis      (check-history model-name history options)]
 
-          (if (true? (:verbose options))
-            (json/pprint analysis)
-            (println filepath "\t" (:valid? analysis)))))
+        (if (true? (:verbose options))
+          (json/pprint analysis)
+          (println filepath "\t" (:valid? analysis)))))
 
       (System/exit 0))
 
