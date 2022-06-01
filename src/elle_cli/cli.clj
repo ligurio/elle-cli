@@ -219,7 +219,7 @@
 
       (doseq [filepath arguments]
         (if (not (.exists (io/as-file filepath)))
-          (throw (Exception. "File not found")))
+          (throw (Exception. (format "File not found: %s" filepath))))
 
         (let [read-history  (or read-history (read-fn-by-extension filepath))
               history       (read-history filepath)
