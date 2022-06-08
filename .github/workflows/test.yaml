@@ -61,9 +61,9 @@ jobs:
       if: ${{ matrix.operating-system == 'macOS-latest' }}
 
     - name: Run regression tests on Ubuntu
-      run: bash -x ./test.sh
+      run: sh ./test.sh
       if: ${{ matrix.operating-system == 'ubuntu-latest' }}
 
     - name: Run regression tests on macOS
-      run: bash -x ./test.sh
+      run: sh ./test.sh
       if: ${{ matrix.operating-system == 'macOS-latest' }}
