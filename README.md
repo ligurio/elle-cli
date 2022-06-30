@@ -75,13 +75,15 @@ An Elle's checker for write-read registers. Options are:
   `consistent-view`, `conflict-serializable`, `cursor-stability`,
   `forward-consistent-view`, `monotonic-snapshot-read`, `monotonic-view`,
   `read-committed`, `read-uncommitted`, `repeatable-read`, `serializable`,
-  `snapshot-isolation`, `strict-serializable`, `update-serializable`.
+  `snapshot-isolation`, `strict-serializable`, `strong-serializable`,
+  `update-serializable`.
 - **anomalies** - a collection of specific anomalies you'd like to look for.
   Defaults to `G0`. Possible values are: `G0`, `G0-process`, `G0-realtime`,
   `G1a`, `G1b`, `G1c`, `G1c-process`, `G-single`, `G-single-process`,
   `G-single-realtime`, `G-nonadjacent`, `G-nonadjacent-process`,
   `G-nonadjacent-realtime`, `G2-item`, `G2-item-process`, `G2-item-realtime`,
-  `G2-process`, `GSIa`, `GSIb`, `incompatible-order`, `dirty-update`.
+  `G2-process`, `GSIa`, `GSIb`, `incompatible-order`, `dirty-update`,
+  `lost-update`, `write-skew`.
 - **cycle-search-timeout** - how many milliseconds are we willing to search a
   single SCC for a cycle? Default value is `1000`.
 - **directory** - where to output files, if desired. Default value is `nil`.
@@ -127,13 +129,15 @@ Options are:
   `consistent-view`, `conflict-serializable`, `cursor-stability`,
   `forward-consistent-view`, `monotonic-snapshot-read`, `monotonic-view`,
   `read-committed`, `read-uncommitted`, `repeatable-read`, `serializable`,
-  `snapshot-isolation`, `strict-serializable`, `update-serializable`.
+  `snapshot-isolation`, `strict-serializable`, `strong-serializable`,
+  `update-serializable`.
 - **anomalies** - a collection of specific anomalies you'd like to look for.
   Defaults to `G0`. Possible values are: `G0`, `G0-process`, `G0-realtime`,
   `G1a`, `G1b`, `G1c`, `G1c-process`, `G-single`, `G-single-process`,
   `G-single-realtime`, `G-nonadjacent`, `G-nonadjacent-process`,
   `G-nonadjacent-realtime`, `G2-item`, `G2-item-process`, `G2-item-realtime`,
-  `G2-process`, `GSIa`, `GSIb`, `incompatible-order`, `dirty-update`.
+  `G2-process`, `GSIa`, `GSIb`, `incompatible-order`, `dirty-update`,
+  `lost-update`, `write-skew`.
 - **cycle-search-timeout** - how many milliseconds are we willing to search a
   single SCC for a cycle? Default value is `1000`.
 - **directory** - where to output files, if desired. Default value is `nil`.

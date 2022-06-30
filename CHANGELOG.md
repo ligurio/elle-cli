@@ -18,6 +18,7 @@ change log follows the conventions of
 ### Changed
 
 - Updated test descriptions in a README. (#37)
+- Bump Elle version to 0.1.5.
 
 ## [0.1.3] - 2022-05-11
 
