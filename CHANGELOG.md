@@ -17,6 +17,8 @@ change log follows the conventions of
 
 ### Changed
 
+- Knossos register model is removed. Use Elle's register instead. (#42).
+
 ## [0.1.4] - 2022-06-30
 
 [0.1.4]: https://github.com/ligurio/elle-cli/compare/0.1.3...0.1.4
