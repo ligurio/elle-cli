@@ -2,8 +2,9 @@
 
 [![Testing](https://github.com/ligurio/elle-cli/actions/workflows/test.yaml/badge.svg)](https://github.com/ligurio/elle-cli/actions/workflows/test.yaml)
 
-is a command-line tool with black-box transactional safety checkers. In
-comparison to Jepsen library it is standalone and language-agnostic tool. You
+is a command-line frontend to transactional consistency checkers for black-box
+databases.
+In comparison to Jepsen library it is standalone and language-agnostic tool. You
 can use it with tests written in any programming language and everywhere where
 JVM is available. Under the hood `elle-cli` uses libraries
 [Elle](https://github.com/jepsen-io/elle),
