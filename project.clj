@@ -13,6 +13,6 @@
                  [org.clojure/tools.logging "1.1.0"]
                  [org.clojure/data.json "2.4.0"]
                  [spootnik/unilog "0.7.28"] ; required by elle
-                 [elle "0.1.5"]
-                 [jepsen "0.2.7"]
+                 [elle "0.1.6"]
+                 [jepsen "0.3.0"]
                  [knossos "0.3.8"]])

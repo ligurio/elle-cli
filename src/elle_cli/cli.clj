@@ -12,6 +12,7 @@
             [jepsen.tests.bank :as jepsen-bank]
             [jepsen.tests.long-fork :as jepsen-long-fork]
             [jepsen.independent :as independent]
+            [jepsen.history :as h]
             [elle-cli.comments :as comments-model]
             [elle-cli.sequential :as sequential-model]
             [elle.list-append :as elle-list-append]
@@ -231,7 +232,7 @@
           (throw (Exception. (format "File not found: %s" filepath))))
 
         (let [read-history  (or read-history (read-fn-by-extension filepath))
-              history       (read-history filepath)
+              history       (h/history (read-history filepath))
               analysis      (check-history model-name history options)
               validness     (:valid? analysis)]
 
