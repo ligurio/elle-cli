@@ -73,10 +73,8 @@
     (mapv keyword (str/split s #","))))
 
 (def models
-  {"knossos-register"        knossos-model/register
-   "knossos-cas-register"    knossos-model/cas-register
+  {"knossos-cas-register"    knossos-model/cas-register
    "knossos-mutex"           knossos-model/mutex
-   "register"                knossos-model/register
    "cas-register"            knossos-model/cas-register
    "mutex"                   knossos-model/mutex
    "jepsen-bank"             jepsen-bank/checker
@@ -185,10 +183,8 @@
     (case model-name
        ; Operations in a histories passed to a Knossos additionally normalized,
        ; see src/knossos/cli.clj:read-history.
-       "register" (competition/analysis (checker-fn) (history/parse-ops history))
        "cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "mutex" (competition/analysis (checker-fn) (history/parse-ops history))
-       "knossos-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "knossos-cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "knossos-mutex" (competition/analysis (checker-fn) (history/parse-ops history))
        "comments" ((independent/checker (checker-fn)) (history/parse-ops history))
