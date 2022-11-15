@@ -14,6 +14,8 @@ change log follows the conventions of
 
 ### Changed
 
+- Bump Elle version to 0.1.6.
+- Bump Jepsen version to 0.3.0.
 
 ## [0.1.5] - 2022-12-06
 
