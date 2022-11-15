@@ -1,1 +1,4 @@
 target
+.clj-kondo
+.lsp
+hs_err_*.log
