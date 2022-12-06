@@ -6,14 +6,23 @@ change log follows the conventions of
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.4...HEAD
+[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.5...HEAD
+
+### Added
+
+### Fixed
+
+### Changed
+
+
+## [0.1.5] - 2022-12-06
+
+[0.1.5]: https://github.com/ligurio/elle-cli/compare/0.1.4...0.1.5
 
 ### Added
 
 - Add a checker for comments test (#32).
 - Add a checker for sequential test (#33).
-
-### Fixed
 
 ### Changed
 
