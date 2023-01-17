@@ -11,6 +11,7 @@ change log follows the conventions of
 ### Added
 
 - Shell script that runs a JAR file.
+- Lua rockspec.
 
 ### Fixed
 
