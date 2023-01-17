@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -eu
+
+ver="0.1.6"
+
+options=$*
+if test -z "$options"; then
+    echo "Usage: $(basename "$0") --help"
+    exit 0
+fi
+
+java_path=$(readlink -f "$(which java)")
+if test -z "$java_path"; then
+    echo "No Java found."
+    exit 1
+fi
+
+jar_name="elle-cli-${ver}-standalone.jar"
+jar_path="./${jar_name}"
+if [ ! -f "${jar_path}" ]; then
+    jar_path="./target/${jar_path}"
+    if [ ! -f "${jar_path}" ]; then
+        echo "JAR file ($jar_name) is not found!"
+        exit 1
+    fi
+fi
+
+cmd_line="$java_path -jar $jar_path $options"
+eval "$cmd_line"
