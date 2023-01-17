@@ -2,3 +2,4 @@ target
 .clj-kondo
 .lsp
 hs_err_*.log
+.lein-repl-history
