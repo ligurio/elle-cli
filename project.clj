@@ -14,5 +14,5 @@
                  [org.clojure/data.json "2.4.0"]
                  [spootnik/unilog "0.7.28"] ; required by elle
                  [elle "0.1.6"]
-                 [jepsen "0.3.0"]
+                 [jepsen "0.3.2"]
                  [knossos "0.3.9"]])
