@@ -15,4 +15,4 @@
                  [spootnik/unilog "0.7.28"] ; required by elle
                  [elle "0.1.6"]
                  [jepsen "0.3.0"]
-                 [knossos "0.3.8"]])
+                 [knossos "0.3.9"]])
