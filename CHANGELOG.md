@@ -16,6 +16,8 @@ change log follows the conventions of
 
 ### Changed
 
+- Bump Knossos version to 0.3.9.
+
 ## [0.1.6]
 
 [0.1.6]: https://github.com/ligurio/elle-cli/compare/0.1.5...0.1.6
