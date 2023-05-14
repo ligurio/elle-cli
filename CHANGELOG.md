@@ -16,6 +16,7 @@ change log follows the conventions of
 
 ### Changed
 
+- Bump Jepsen version to 0.3.2.
 - Bump Knossos version to 0.3.9.
 
 ## [0.1.6]
