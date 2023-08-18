@@ -1,4 +1,4 @@
-(defproject elle-cli "0.1.6"
+(defproject elle-cli "0.1.7"
   :description "Command-line frontend to transactional consistency checkers for black-box databases"
   :url "https://github.com/ligurio/elle-cli"
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
