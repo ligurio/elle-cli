@@ -2,7 +2,7 @@
 
 set -u
 
-ELLE_CLI_VERSION="0.1.6"
+ELLE_CLI_VERSION="0.1.7"
 ELLE_CLI_BIN="java -jar target/elle-cli-${ELLE_CLI_VERSION}-standalone.jar"
 
 suite_status=0

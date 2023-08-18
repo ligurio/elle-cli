@@ -6,13 +6,21 @@ change log follows the conventions of
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.6...HEAD
+[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.7...HEAD
+
+### Added
+
+### Fixed
+
+### Changed
+
+## [0.1.7]
+
+[0.1.7]: https://github.com/ligurio/elle-cli/compare/0.1.6...0.1.7
 
 ### Added
 
 - Shell script that runs a JAR file.
-
-### Fixed
 
 ### Changed
 
