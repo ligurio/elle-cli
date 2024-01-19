@@ -14,6 +14,8 @@ change log follows the conventions of
 
 ### Changed
 
+- Bump Elle version to 0.2.0.
+
 ## [0.1.7]
 
 [0.1.7]: https://github.com/ligurio/elle-cli/compare/0.1.6...0.1.7
