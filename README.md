@@ -395,7 +395,7 @@ Like G2 and the bank tests, this test does not verify consistency *in general*.
 
 ## License
 
-Copyright © 2021-2023 Sergey Bronnikov
+Copyright © 2021-2024 Sergey Bronnikov
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
