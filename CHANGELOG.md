@@ -15,7 +15,7 @@ change log follows the conventions of
 ### Changed
 
 - Bump Elle version to 0.2.1.
-- Bump Jepsen version to 0.3.4.
+- Bump Jepsen version to 0.3.7.
 
 ## [0.1.7]
 
