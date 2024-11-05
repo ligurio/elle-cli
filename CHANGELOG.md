@@ -10,6 +10,8 @@ change log follows the conventions of
 
 ### Added
 
+- An option `--allow-negative-balances`.
+
 ### Fixed
 
 - A `set` checker (#44).
