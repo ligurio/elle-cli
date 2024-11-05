@@ -177,21 +177,14 @@
        ; see src/knossos/cli.clj:read-history.
        "cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "mutex" (competition/analysis (checker-fn) (history/parse-ops history))
-       "knossos-cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
-       "knossos-mutex" (competition/analysis (checker-fn) (history/parse-ops history))
        "comments" ((independent/checker (checker-fn)) (history/parse-ops history))
        "sequential" ((checker-fn) (history/parse-ops history))
        "list-append" (checker-fn options history)
        "rw-register" (checker-fn options history)
-       "elle-list-append" (checker-fn options history)
-       "elle-rw-register" (checker-fn options history)
        "bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
        "counter" (jepsen-model/check-safe (checker-fn) nil history)
        "set" (jepsen-model/check-safe (checker-fn) nil history)
-       "set-full" (jepsen-model/check-safe (checker-fn) nil history)
-       "jepsen-bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
-       "jepsen-counter" (jepsen-model/check-safe (checker-fn) nil history)
-       "jepsen-set-full" (jepsen-model/check-safe (checker-fn) nil history))))
+       "set-full" (jepsen-model/check-safe (checker-fn) nil history))))
 
 (defn read-fn-by-extension
   "Take a path to file and returns a function for reading that file."
