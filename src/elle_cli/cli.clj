@@ -196,6 +196,7 @@
        "elle-rw-register" (checker-fn options history)
        "bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
        "counter" (jepsen-model/check-safe (checker-fn) nil history)
+       "set" (jepsen-model/check-safe (checker-fn) nil history)
        "set-full" (jepsen-model/check-safe (checker-fn) nil history)
        "jepsen-bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
        "jepsen-counter" (jepsen-model/check-safe (checker-fn) nil history)

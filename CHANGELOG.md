@@ -12,6 +12,8 @@ change log follows the conventions of
 
 ### Fixed
 
+- A `set` checker (#44).
+
 ### Changed
 
 - Bump Elle version to 0.2.1.
