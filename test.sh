@@ -61,5 +61,6 @@ run_test 1 "--model bank histories/jepsen/bank.edn"
 run_test 1 "--model bank histories/jepsen/bank.json"
 run_test 1 "--model bank histories/jepsen/bank-tidb.edn"
 
+run_test 1 "--model long-fork --group-size 3 histories/jepsen/long-fork.edn"
 
 exit $suite_status
