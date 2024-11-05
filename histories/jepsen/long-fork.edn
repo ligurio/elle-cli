@@ -1,0 +1,4 @@
+[{:type :invoke, :f :read, :value [[:r 0 nil] [:r 1 nil] [:r 2 nil]]},
+{:type :ok, :f :read, :value [[:r 0 1] [:r 1 1] [:r 2 nil]]},
+{:type :invoke, :f :read, :value [[:r 2 nil] [:r 0 nil] [:r 1 nil]]},
+{:type :ok, :f :read, :value [[:r 2 1]   [:r 0 1]   [:r 1 nil]]}]

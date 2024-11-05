@@ -138,7 +138,10 @@
     :parse-fn #(Integer/parseInt %)]
 
    ; Jepsen-specific options.
-   ; None.
+   ["-g" "--group-size GROUP-SIZE"
+    "(Jepsen) A group size."
+    :default 0
+    :parse-fn #(Integer/parseInt %)]
 
    ; Knossos-specific options.
    ; None.
@@ -184,7 +187,8 @@
        "bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
        "counter" (jepsen-model/check-safe (checker-fn) nil history)
        "set" (jepsen-model/check-safe (checker-fn) nil history)
-       "set-full" (jepsen-model/check-safe (checker-fn) nil history))))
+       "set-full" (jepsen-model/check-safe (checker-fn) nil history)
+       "long-fork" (jepsen-model/check-safe (checker-fn (get options :group-size)) nil history))))
 
 (defn read-fn-by-extension
   "Take a path to file and returns a function for reading that file."

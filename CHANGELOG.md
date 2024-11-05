@@ -13,6 +13,7 @@ change log follows the conventions of
 ### Fixed
 
 - A `set` checker (#44).
+- A `long-fork` checker (#43).
 
 ### Changed
 
