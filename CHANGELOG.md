@@ -19,6 +19,10 @@ change log follows the conventions of
 - Bump Elle version to 0.2.1.
 - Bump Jepsen version to 0.3.7.
 
+### Removed
+
+- Model names with prefixes `jepsen-` and `knossos-`.
+
 ## [0.1.7]
 
 [0.1.7]: https://github.com/ligurio/elle-cli/compare/0.1.6...0.1.7

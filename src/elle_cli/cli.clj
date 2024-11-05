@@ -74,15 +74,8 @@
     (mapv keyword (str/split s #","))))
 
 (def models
-  {"knossos-cas-register"    knossos-model/cas-register
-   "knossos-mutex"           knossos-model/mutex
-   "cas-register"            knossos-model/cas-register
+  {"cas-register"            knossos-model/cas-register
    "mutex"                   knossos-model/mutex
-   "jepsen-bank"             jepsen-bank/checker
-   "jepsen-long-fork"        jepsen-long-fork/checker
-   "jepsen-counter"          jepsen-model/counter
-   "jepsen-set"              jepsen-model/set
-   "jepsen-set-full"         jepsen-model/set-full
    "bank"                    jepsen-bank/checker
    "long-fork"               jepsen-long-fork/checker
    "counter"                 jepsen-model/counter
@@ -90,8 +83,6 @@
    "set-full"                jepsen-model/set-full
    "comments"                comments-model/checker
    "sequential"              sequential-model/checker
-   "elle-rw-register"        elle-rw-register/check
-   "elle-list-append"        elle-list-append/check
    "rw-register"             elle-rw-register/check
    "list-append"             elle-list-append/check})
 
