@@ -286,6 +286,12 @@ Example of history:
 {:type :ok,     :f :add, :value [0 2], :process 0, :time 11209256522, :index 5}
 ```
 
+Beware, `set` and `set-ful ` have a different computational
+complexities. The `set-full` checker is a lot more expensive, but
+gives you precise bounds on latencies and stability of records
+over time, whereas `set` assumes a single read at the end of the
+test.
+
 ### set-full
 
 A Jepsen's checker for a set histories. It is a more rigorous set analysis. We
@@ -305,6 +311,12 @@ all elements present at that time.
 {:type :ok,     :f :add, :value [0 4], :process 0, :time 11745589449, :index 9}
 {:type :invoke, :f :add, :value [0 5], :process 0, :time 11786251931, :index 10}
 ```
+
+Beware, `set` and `set-ful ` have a different computational
+complexities. The `set-full` checker is a lot more expensive, but
+gives you precise bounds on latencies and stability of records
+over time, whereas `set` assumes a single read at the end of the
+test.
 
 ### cas-register
 
