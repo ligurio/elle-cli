@@ -142,6 +142,9 @@
     "(Jepsen) A group size."
     :default 0
     :parse-fn #(Integer/parseInt %)]
+   ["-n" "--allow-negative-balances"
+    "(Jepsen) Allow negative balances in a bank model."
+    :default false]
 
    ; Knossos-specific options.
    ; None.
@@ -184,7 +187,9 @@
        "sequential" ((checker-fn) (history/parse-ops history))
        "list-append" (checker-fn options history)
        "rw-register" (checker-fn options history)
-       "bank" (jepsen-model/check-safe (checker-fn {:negative-balances? true}) nil history)
+       "bank" (jepsen-model/check-safe (checker-fn
+         {:negative-balances? (get options :allow-negative-balances)})
+         nil history)
        "counter" (jepsen-model/check-safe (checker-fn) nil history)
        "set" (jepsen-model/check-safe (checker-fn) nil history)
        "set-full" (jepsen-model/check-safe (checker-fn) nil history)
