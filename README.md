@@ -272,8 +272,11 @@ A Jepsen's checker for a set histories.
 Given a set of `:add` operations, that inserts a sequence of unique records
 into a table, followed by a final `:read`, that concurrently attempts to read
 all of those records back, verifies that every successfully added element is
-present in the read, and that the read contains only elements for which an add
-was attempted.
+present in the read, and that the read contains only elements for which an `:add`
+was attempted. We measure how long it takes for a record to become
+durably visible, or, if it lost, how long it takes to disappear.
+A linearizable `set` should make every inserted element
+immediately visible.
 
 Example of history:
 
