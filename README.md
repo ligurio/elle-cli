@@ -161,12 +161,12 @@ Example of history:
 
 ### bank
 
-A Jepsen's checker for bank histories. Option `negative-balances` is always
-enabled.
+A Jepsen's checker for bank histories.
 
 Test simulates a set of bank accounts, one per row, and transfers money
-between them at random, ensuring that no account goes negative. Under snapshot
-isolation, one can prove that transfers must serialize, and the sum of all
+between them at random, ensuring that no account goes negative.
+An option `--allow-negative-balances` change this behaviour.
+Under snapshot isolation, one can prove that transfers must serialize, and the sum of all
 accounts is conserved. Meanwhile, read transactions select the current balance
 of all accounts. Snapshot isolation ensures those reads see a consistent
 snapshot, which implies the sum of accounts in any read is constant as well.
