@@ -13,6 +13,10 @@ change log follows the conventions of
 - Bump Elle version to 0.2.6.
 - Print unknown status without colon (#2).
 
+### Fixed
+
+- A `bank` checker (#82).
+
 [Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.9...HEAD
 
 ## [0.1.9] - 2025-08-27
