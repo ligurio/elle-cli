@@ -1,0 +1,2 @@
+{:type :invoke, :f :read, :process 0, :time 11142323154, :index 0}
+{:type :ok, :f :read, :process 0, :time 11245205834, :value {0 10, 1 10, 2 10}, :index 1}

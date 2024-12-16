@@ -57,9 +57,11 @@ run_test 1 "--model set-full histories/jepsen/set_full.edn"
 run_test 1 "--model set-full histories/jepsen/set_full.json"
 run_test 0 "--model set      histories/jepsen/set.edn"
 
-run_test 1 "--model bank histories/jepsen/bank.edn"
-run_test 1 "--model bank histories/jepsen/bank.json"
+run_test 0 "--model bank histories/jepsen/bank.edn"
+run_test 0 "--model bank histories/jepsen/bank.json"
 run_test 1 "--model bank histories/jepsen/bank-tidb.edn"
+run_test 0 "--model bank histories/jepsen/bank-neg.edn"
+run_test 1 "--model bank histories/jepsen/bank-negative-balances.json"
 
 run_test 1 "--model long-fork --group-size 3 histories/jepsen/long-fork.edn"
 
