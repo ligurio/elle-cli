@@ -8,6 +8,10 @@ change log follows the conventions of
 
 [Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.8...HEAD
 
+### Changed
+
+- Bump Elle version to 0.2.4.
+
 ## [0.1.8] - 2024-11-05
 
 [0.1.8]: https://github.com/ligurio/elle-cli/compare/0.1.7...0.1.8
