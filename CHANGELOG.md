@@ -6,7 +6,11 @@ change log follows the conventions of
 
 ## [Unreleased]
 
-[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.8...HEAD
+[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.9...HEAD
+
+## [0.1.9] - 2025-08-27
+
+[0.1.9]: https://github.com/ligurio/elle-cli/compare/0.1.8...0.1.9
 
 ### Changed
 
