@@ -6,6 +6,10 @@ change log follows the conventions of
 
 ## [Unreleased]
 
+### Changed
+
+- Bump Jepsen version to 0.3.10.
+
 [Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.9...HEAD
 
 ## [0.1.9] - 2025-08-27
