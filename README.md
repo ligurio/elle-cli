@@ -170,6 +170,9 @@ Under snapshot isolation, one can prove that transfers must serialize, and the s
 accounts is conserved. Meanwhile, read transactions select the current balance
 of all accounts. Snapshot isolation ensures those reads see a consistent
 snapshot, which implies the sum of accounts in any read is constant as well.
+An option `--total-amount TOTAL-AMOUNT` sets a total amount to
+allocate and option `--max-transfer MAX-TRANSFER` sets the largest
+transfer we'll try to execute.
 
 Example of history:
 
@@ -410,7 +413,7 @@ Like G2 and the bank tests, this test does not verify consistency *in general*.
 
 ## License
 
-Copyright © 2021-2025 Sergey Bronnikov
+Copyright © 2021-2026 Sergey Bronnikov
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.

@@ -9,10 +9,10 @@
             [clojure.pprint :refer [pprint]]
             [clojure.tools.logging :refer [info warn]]
             [jepsen [checker :as jepsen-model]]
-            [jepsen.tests.bank :as jepsen-bank]
             [jepsen.tests.long-fork :as jepsen-long-fork]
             [jepsen.independent :as independent]
             [jepsen.history :as h]
+            [elle-cli.bank :as bank-model]
             [elle-cli.comments :as comments-model]
             [elle-cli.sequential :as sequential-model]
             [elle.list-append :as elle-list-append]
@@ -76,7 +76,7 @@
 (def models
   {"cas-register"            knossos-model/cas-register
    "mutex"                   knossos-model/mutex
-   "bank"                    jepsen-bank/checker
+   "bank"                    bank-model/checker
    "long-fork"               jepsen-long-fork/checker
    "counter"                 jepsen-model/counter
    "set"                     jepsen-model/set
@@ -142,9 +142,19 @@
     "(Jepsen) A group size."
     :default 0
     :parse-fn #(Integer/parseInt %)]
+
+   ; Bank-specific options.
    ["-n" "--allow-negative-balances"
-    "(Jepsen) Allow negative balances in a bank model."
+    "(Bank) Allow negative balances in a bank model."
     :default false]
+   ["" "--max-transfer MAX-TRANSFER"
+    "(Bank) The largest transfer we'll try to execute."
+    :parse-fn #(Integer/parseInt %)
+    :default 5]
+   ["-o" "--total-amount TOTAL-AMOUNT"
+    "(Bank) Total amount to allocate."
+    :parse-fn #(Integer/parseInt %)
+    :default 100]
 
    ; Knossos-specific options.
    ; None.
@@ -188,7 +198,10 @@
        "list-append" (checker-fn options history)
        "rw-register" (checker-fn options history)
        "bank" (jepsen-model/check-safe (checker-fn
-         {:negative-balances? (get options :allow-negative-balances)})
+         {:negative-balances? (get options :allow-negative-balances)
+          :total-amount (get options :total-amount)
+          :max-transfer (get options :max-transfer)
+         })
          nil history)
        "counter" (jepsen-model/check-safe (checker-fn) nil history)
        "set" (jepsen-model/check-safe (checker-fn) nil history)
