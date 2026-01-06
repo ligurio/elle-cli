@@ -22,7 +22,7 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v2
       with:
-        java-version: '12'
+        java-version: 17
         distribution: 'zulu'
 
     - name: Setup Clojure tools
