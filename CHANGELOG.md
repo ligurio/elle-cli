@@ -11,6 +11,7 @@ change log follows the conventions of
 - Bump Jepsen version to 0.3.10.
 - Bump Knossos version to 0.3.13 (0.1.13).
 - Bump Elle version to 0.2.5.
+- Print unknown status without colon (#2).
 
 [Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.9...HEAD
 

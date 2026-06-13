@@ -228,7 +228,8 @@
         (let [read-history  (or read-history (read-fn-by-extension filepath))
               history       (h/history (read-history filepath))
               analysis      (check-history model-name history options)
-              validness     (:valid? analysis)]
+              validness     (:valid? analysis)
+              validness     (if (keyword? validness) (name validness) validness)]
 
         (swap! results assoc filepath validness)
 
