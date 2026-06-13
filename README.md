@@ -57,7 +57,7 @@ three validity states:
 
 - `true`      means the history was valid
 - `false`     means the history was invalid
-- `:unknown`  means checker was unable to complete the analysis; e.g. it ran
+- `unknown`   means checker was unable to complete the analysis; e.g. it ran
               out of memory.
 
 In some cases conversion of history from JSON format to Clojure data structures
