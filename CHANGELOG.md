@@ -10,7 +10,7 @@ change log follows the conventions of
 
 - Bump Jepsen version to 0.3.11.
 - Bump Knossos version to 0.3.15.
-- Bump Elle version to 0.2.6.
+- Bump Elle version to 0.2.7.
 - Print unknown status without colon (#2).
 
 ### Fixed
