@@ -103,8 +103,11 @@
     :parse-fn history-read-fn
     :validate [identity
                (str "Must be one of " (str/join ", " (sort (keys history-read-fn))))]]
-   ["-v" "--verbose"
-    "(General) Enable verbose mode."]
+   ["-v" "--output OUTPUT"
+    "(General) Output format. Either 'text' or 'json'. Defaults to 'text'."
+    :default :text
+    :parse-fn keyword
+    :validate [#{:text :json} "Must be one of text, json"]]
    ["-h" "--help"
     "(General) Print usage."]
 
@@ -218,7 +221,8 @@
 (defn -main
   [& args]
   (try
-    (let [{:keys [options arguments summary errors]} (cli/parse-opts args opts)
+    (let [args (mapv #(if (= "--verbose" %) "--output json" %) args)
+          {:keys [options arguments summary errors]} (cli/parse-opts args opts)
           model-name (:model options)
           read-history (:format options)
           results (atom (hash-map))
@@ -244,7 +248,7 @@
 
         (swap! results assoc filepath validness)
 
-        (if (true? (:verbose options))
+        (if (= :json (:output options))
           (json/pprint analysis)
           (println filepath "\t" validness))))
 

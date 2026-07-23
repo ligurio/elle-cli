@@ -6,12 +6,20 @@ change log follows the conventions of
 
 ## [Unreleased]
 
+### Added
+
+- An option `--output` that accepts `text` or `json`. Default is `text`.
+
 ### Changed
 
 - Bump Jepsen version to 0.3.11.
 - Bump Knossos version to 0.3.15.
 - Bump Elle version to 0.2.7.
 - Print unknown status without colon (#2).
+
+### Deprecated
+
+- An option `--verbose` is deprecated in favor of `--output json`.
 
 ### Fixed
 
