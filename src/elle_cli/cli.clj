@@ -10,7 +10,6 @@
             [clojure.tools.logging :refer [info warn]]
             [jepsen [checker :as jepsen-model]]
             [jepsen.tests.long-fork :as jepsen-long-fork]
-            [jepsen.independent :as independent]
             [jepsen.history :as h]
             [elle-cli.bank :as bank-model]
             [elle-cli.comments :as comments-model]
@@ -194,7 +193,7 @@
        ; see src/knossos/cli.clj:read-history.
        "cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "mutex" (competition/analysis (checker-fn) (history/parse-ops history))
-       "comments" ((independent/checker (checker-fn)) (history/parse-ops history))
+       "comments" (jepsen-model/check (checker-fn) nil (history/parse-ops history) {})
        "sequential" ((checker-fn) (history/parse-ops history))
        "list-append" (checker-fn options history)
        "rw-register" (checker-fn options history)
