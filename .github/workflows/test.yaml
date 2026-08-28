@@ -58,3 +58,6 @@ jobs:
 
     - name: Run regression tests
       run: make test
+
+    - name: Run regression tests with code coverage
+      run: make coverage
