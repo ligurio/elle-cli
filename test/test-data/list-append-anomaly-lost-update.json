@@ -1,0 +1,6 @@
+[{"index":0,"process":0,"type":"invoke","value":[["append",1,0]]},
+ {"index":1,"process":0,"type":"ok","value":[["append",1,0]]},
+ {"index":2,"process":1,"type":"invoke","value":[["r",1,null],["append",1,1]]},
+ {"index":3,"process":1,"type":"ok","value":[["r",1,[0]],["append",1,1]]},
+ {"index":4,"process":2,"type":"invoke","value":[["r",1,null],["append",1,2]]},
+ {"index":5,"process":2,"type":"ok","value":[["r",1,[0]],["append",1,2]]}]

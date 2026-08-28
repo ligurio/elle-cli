@@ -1,0 +1,2 @@
+[{"index":0,"process":0,"type":"invoke","f":"txn","value":[["r","x",null]]},
+ {"index":1,"process":0,"type":"ok","f":"txn","value":[["r","x",null]]}]

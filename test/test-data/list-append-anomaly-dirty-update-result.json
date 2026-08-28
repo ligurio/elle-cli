@@ -1,0 +1,48 @@
+{"valid?":false,
+ "anomaly-types":["G1a", "dirty-update"],
+ "anomalies":
+ {"G1a":
+  [{"op":
+    {"index":5,
+     "time":-1,
+     "type":"ok",
+     "process":2,
+     "f":null,
+     "value":[["r", 1, [1, 2]]]},
+    "mop":["r", 1, [1, 2]],
+    "writer":
+    {"index":1,
+     "time":-1,
+     "type":"fail",
+     "process":0,
+     "f":null,
+     "value":[["append", 1, 1]]},
+    "element":1}],
+  "dirty-update":
+  [{"key":1,
+    "values":[1, 2],
+    "txns":
+    [{"index":1,
+      "time":-1,
+      "type":"fail",
+      "process":0,
+      "f":null,
+      "value":[["append", 1, 1]]},
+     "...",
+     {"index":3,
+      "time":-1,
+      "type":"ok",
+      "process":1,
+      "f":null,
+      "value":[["append", 1, 2]]}]}]},
+ "not":["read-committed"],
+ "also-not":
+ ["causal-cerone", "consistent-view", "cursor-stability",
+  "forward-consistent-view", "monotonic-atomic-view",
+  "monotonic-snapshot-read", "monotonic-view",
+  "parallel-snapshot-isolation", "prefix", "read-atomic",
+  "repeatable-read", "serializable", "snapshot-isolation",
+  "strong-read-committed", "strong-serializable",
+  "strong-session-read-committed", "strong-session-serializable",
+  "strong-session-snapshot-isolation", "strong-snapshot-isolation",
+  "update-atomic", "update-serializable"]}

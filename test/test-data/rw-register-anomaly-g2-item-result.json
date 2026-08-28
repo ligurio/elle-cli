@@ -1,0 +1,49 @@
+{"valid?":false,
+ "anomaly-types":
+ ["G2-item", "strong-snapshot-isolation-cycle-exists"],
+ "anomalies":
+ {"G2-item":
+  [{"cycle":
+    [{"index":1,
+      "time":-1,
+      "type":"ok",
+      "process":0,
+      "f":"txn",
+      "value":[["r", "x", null], ["w", "y", 1]]},
+     {"index":3,
+      "time":-1,
+      "type":"ok",
+      "process":1,
+      "f":"txn",
+      "value":[["r", "y", null], ["w", "x", 1]]},
+     {"index":1,
+      "time":-1,
+      "type":"ok",
+      "process":0,
+      "f":"txn",
+      "value":[["r", "x", null], ["w", "y", 1]]}],
+    "steps":
+    [{"key":"x",
+      "value":null,
+      "value'":1,
+      "type":"rw",
+      "a-mop-index":0,
+      "b-mop-index":1},
+     {"key":"y",
+      "value":null,
+      "value'":1,
+      "type":"rw",
+      "a-mop-index":0,
+      "b-mop-index":1}],
+    "type":"G2-item"}],
+  "strong-snapshot-isolation-cycle-exists":
+  [{"type":"strong-snapshot-isolation-cycle-exists",
+    "not":"strong-snapshot-isolation",
+    "subgraph":
+    ["extension", ["union", "ww", "wwp", "wr", "wrp", "realtime"],
+     ["union", "rw", "rwp"]],
+    "scc-size":1,
+    "scc":[1]}]},
+ "not":["repeatable-read", "strong-snapshot-isolation"],
+ "also-not":
+ ["serializable", "strong-serializable", "strong-session-serializable"]}

@@ -1,0 +1,4 @@
+[{"index":0,"process":0,"type":"invoke","f":"txn","value":[["r","x",null],["w","y",1]]},
+ {"index":1,"process":0,"type":"ok","f":"txn","value":[["r","x",null],["w","y",1]]},
+ {"index":2,"process":1,"type":"invoke","f":"txn","value":[["r","y",null],["w","x",1]]},
+ {"index":3,"process":1,"type":"ok","f":"txn","value":[["r","y",null],["w","x",1]]}]

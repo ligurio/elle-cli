@@ -1,0 +1,6 @@
+[{"index":0,"process":0,"type":"invoke","f":"txn","value":[["r","x",null],["w","x",1]]},
+ {"index":1,"process":0,"type":"ok","f":"txn","value":[["r","x",null],["w","x",1]]},
+ {"index":2,"process":1,"type":"invoke","f":"txn","value":[["r","x",1],["w","x",2]]},
+ {"index":3,"process":1,"type":"ok","f":"txn","value":[["r","x",1],["w","x",2]]},
+ {"index":4,"process":2,"type":"invoke","f":"txn","value":[["r","x",5]]},
+ {"index":5,"process":2,"type":"ok","f":"txn","value":[["r","x",5]]}]

@@ -1,0 +1,32 @@
+{"valid?":false,
+ "anomaly-types":["G1a", "empty-transaction-graph"],
+ "anomalies":
+ {"G1a":
+  [{"op":
+    {"index":3,
+     "time":-1,
+     "type":"ok",
+     "process":1,
+     "f":null,
+     "value":[["r", 1, [1]]]},
+    "mop":["r", 1, [1]],
+    "writer":
+    {"index":1,
+     "time":-1,
+     "type":"fail",
+     "process":0,
+     "f":null,
+     "value":[["append", 1, 1]]},
+    "element":1}],
+  "empty-transaction-graph":true},
+ "not":["read-committed"],
+ "also-not":
+ ["causal-cerone", "consistent-view", "cursor-stability",
+  "forward-consistent-view", "monotonic-atomic-view",
+  "monotonic-snapshot-read", "monotonic-view",
+  "parallel-snapshot-isolation", "prefix", "read-atomic",
+  "repeatable-read", "serializable", "snapshot-isolation",
+  "strong-read-committed", "strong-serializable",
+  "strong-session-read-committed", "strong-session-serializable",
+  "strong-session-snapshot-isolation", "strong-snapshot-isolation",
+  "update-atomic", "update-serializable"]}
