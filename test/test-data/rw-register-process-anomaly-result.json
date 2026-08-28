@@ -1,0 +1,36 @@
+{"valid?":false,
+ "anomaly-types":["G1c-process"],
+ "anomalies":
+ {"G1c-process":
+  [{"cycle":
+    [{"index":1,
+      "time":-1,
+      "type":"ok",
+      "process":0,
+      "f":"txn",
+      "value":[["r", "x", 1]]},
+     {"index":3,
+      "time":-1,
+      "type":"ok",
+      "process":0,
+      "f":"txn",
+      "value":[["w", "x", 1]]},
+     {"index":1,
+      "time":-1,
+      "type":"ok",
+      "process":0,
+      "f":"txn",
+      "value":[["r", "x", 1]]}],
+    "steps":
+    [{"type":"process", "process":0},
+     {"type":"wr",
+      "key":"x",
+      "value":1,
+      "a-mop-index":0,
+      "b-mop-index":0}],
+    "type":"G1c-process"}]},
+ "not":["strong-session-read-committed"],
+ "also-not":
+ ["strong-read-committed", "strong-serializable",
+  "strong-session-serializable", "strong-session-snapshot-isolation",
+  "strong-snapshot-isolation"]}

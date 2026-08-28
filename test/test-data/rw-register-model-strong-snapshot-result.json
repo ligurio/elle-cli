@@ -1,0 +1,14 @@
+{"valid?":false,
+ "anomaly-types":["strong-snapshot-isolation-cycle-exists"],
+ "anomalies":
+ {"strong-snapshot-isolation-cycle-exists":
+  [{"type":"strong-snapshot-isolation-cycle-exists",
+    "not":"strong-snapshot-isolation",
+    "subgraph":
+    ["extension", ["union", "ww", "wwp", "wr", "wrp", "realtime"],
+     ["union", "rw", "rwp"]],
+    "scc-size":1,
+    "scc":[1]}]},
+ "not":["repeatable-read", "strong-snapshot-isolation"],
+ "also-not":
+ ["serializable", "strong-serializable", "strong-session-serializable"]}

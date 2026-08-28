@@ -1,0 +1,19 @@
+{"valid?":false,
+ "anomaly-types":["internal"],
+ "anomalies":
+ {"internal":
+  [{"op":
+    {"index":3,
+     "time":-1,
+     "type":"ok",
+     "process":1,
+     "f":null,
+     "value":[["append", 1, 2], ["r", 1, [1]]]},
+    "mop":["r", 1, [1]],
+    "expected":["...", 2]}]},
+ "not":["read-atomic"],
+ "also-not":
+ ["causal-cerone", "parallel-snapshot-isolation", "prefix",
+  "serializable", "snapshot-isolation", "strong-serializable",
+  "strong-session-serializable", "strong-session-snapshot-isolation",
+  "strong-snapshot-isolation", "update-atomic"]}

@@ -1,0 +1,19 @@
+{"valid?":false,
+ "anomaly-types":["cyclic-versions"],
+ "anomalies":
+ {"cyclic-versions":
+  [{"key":"x",
+    "scc":[1, 2],
+    "sources":["initial-state", "linearizable-keys"]}]},
+ "not":["read-uncommitted"],
+ "also-not":
+ ["causal-cerone", "consistent-view", "cursor-stability",
+  "forward-consistent-view", "monotonic-atomic-view",
+  "monotonic-snapshot-read", "monotonic-view",
+  "parallel-snapshot-isolation", "prefix", "read-atomic",
+  "read-committed", "repeatable-read", "serializable",
+  "snapshot-isolation", "strong-read-committed",
+  "strong-read-uncommitted", "strong-serializable",
+  "strong-session-read-committed", "strong-session-read-uncommitted",
+  "strong-session-serializable", "strong-session-snapshot-isolation",
+  "strong-snapshot-isolation", "update-atomic", "update-serializable"]}

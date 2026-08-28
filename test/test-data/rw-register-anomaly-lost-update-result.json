@@ -1,0 +1,26 @@
+{"valid?":false,
+ "anomaly-types":["lost-update"],
+ "anomalies":
+ {"lost-update":
+  [{"key":"x",
+    "value":0,
+    "txns":
+    [{"index":3,
+      "time":-1,
+      "type":"ok",
+      "process":1,
+      "f":"txn",
+      "value":[["r", "x", 0], ["w", "x", 1]]},
+     {"index":5,
+      "time":-1,
+      "type":"ok",
+      "process":2,
+      "f":"txn",
+      "value":[["r", "x", 0], ["w", "x", 2]]}]}]},
+ "not":["cursor-stability", "update-atomic"],
+ "also-not":
+ ["consistent-view", "forward-consistent-view",
+  "parallel-snapshot-isolation", "repeatable-read", "serializable",
+  "snapshot-isolation", "strong-serializable",
+  "strong-session-serializable", "strong-session-snapshot-isolation",
+  "strong-snapshot-isolation", "update-serializable"]}

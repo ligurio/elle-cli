@@ -1,0 +1,49 @@
+{"valid?":false,
+ "anomaly-types":
+ ["G2-item", "strong-snapshot-isolation-cycle-exists"],
+ "anomalies":
+ {"G2-item":
+  [{"cycle":
+    [{"index":1,
+      "time":-1,
+      "type":"ok",
+      "process":0,
+      "f":null,
+      "value":[["append", 1, 1], ["r", 2, []]]},
+     {"index":3,
+      "time":-1,
+      "type":"ok",
+      "process":1,
+      "f":null,
+      "value":[["append", 2, 1], ["r", 1, []]]},
+     {"index":1,
+      "time":-1,
+      "type":"ok",
+      "process":0,
+      "f":null,
+      "value":[["append", 1, 1], ["r", 2, []]]}],
+    "steps":
+    [{"type":"rw",
+      "key":2,
+      "value":"init",
+      "value'":1,
+      "a-mop-index":1,
+      "b-mop-index":0},
+     {"type":"rw",
+      "key":1,
+      "value":"init",
+      "value'":1,
+      "a-mop-index":1,
+      "b-mop-index":0}],
+    "type":"G2-item"}],
+  "strong-snapshot-isolation-cycle-exists":
+  [{"type":"strong-snapshot-isolation-cycle-exists",
+    "not":"strong-snapshot-isolation",
+    "subgraph":
+    ["extension", ["union", "ww", "wwp", "wr", "wrp", "realtime"],
+     ["union", "rw", "rwp"]],
+    "scc-size":1,
+    "scc":[1]}]},
+ "not":["repeatable-read", "strong-snapshot-isolation"],
+ "also-not":
+ ["serializable", "strong-serializable", "strong-session-serializable"]}

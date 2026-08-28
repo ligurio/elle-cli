@@ -1,0 +1,4 @@
+[{"index":0,"process":0,"type":"invoke","value":[["append",1,1],["append",1,2]]},
+ {"index":1,"process":0,"type":"ok","value":[["append",1,1],["append",1,2]]},
+ {"index":2,"process":1,"type":"invoke","value":[["r",1,null],["r",1,null]]},
+ {"index":3,"process":1,"type":"ok","value":[["r",1,[1]],["r",1,[1,2]]]}]
