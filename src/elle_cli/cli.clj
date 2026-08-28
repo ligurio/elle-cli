@@ -194,7 +194,7 @@
        "cas-register" (competition/analysis (checker-fn) (history/parse-ops history))
        "mutex" (competition/analysis (checker-fn) (history/parse-ops history))
        "comments" (jepsen-model/check (checker-fn) nil (history/parse-ops history) {})
-       "sequential" ((checker-fn) (history/parse-ops history))
+       "sequential" (jepsen-model/check (checker-fn) {:key-count 4} (history/parse-ops history) {})
        "list-append" (checker-fn options history)
        "rw-register" (checker-fn options history)
        "bank" (jepsen-model/check-safe (checker-fn
