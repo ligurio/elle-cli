@@ -13,7 +13,7 @@ check:
 	$(LEIN) compile
 
 test:
-	sh ./test.sh
+	$(LEIN) test
 
 clean:
 	$(LEIN) clean
