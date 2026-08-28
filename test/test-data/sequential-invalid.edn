@@ -1,0 +1,10 @@
+{:type :invoke, :f :add, :value [0 "0_0"], :process 0, :index 0}
+{:type :ok,     :f :add, :value [0 "0_0"], :process 0, :index 1}
+{:type :invoke, :f :add, :value [0 "0_1"], :process 0, :index 2}
+{:type :ok,     :f :add, :value [0 "0_1"], :process 0, :index 3}
+{:type :invoke, :f :add, :value [0 "0_2"], :process 0, :index 4}
+{:type :ok,     :f :add, :value [0 "0_2"], :process 0, :index 5}
+{:type :invoke, :f :add, :value [0 "0_3"], :process 0, :index 6}
+{:type :ok,     :f :add, :value [0 "0_3"], :process 0, :index 7}
+{:type :invoke, :f :read, :value [0 nil], :process 1, :index 8}
+{:type :ok,     :f :read, :value [0 ["0_3" "0_2" nil nil]], :process 1, :index 9}

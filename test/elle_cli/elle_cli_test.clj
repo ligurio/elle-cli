@@ -141,7 +141,14 @@
    "counter"      ["counter"]
    "set"          ["set"]
    "set-full"     ["set_full"]
-   "long-fork"    ["long-fork"]})
+   "long-fork"    ["long-fork"]
+   "sequential"   ["sequential-valid"
+                   ; Read observes only the subkeys that were inserted (no trailing nil).
+                   "sequential-valid-partial"
+                   ; Read observes no subkeys.
+                   "sequential-valid-none"
+                   ; Read observes a later subkey but not an earlier one (trailing nil).
+                   "sequential-invalid"]})
 
 (def default-opts
   "Default checker options, mirroring the CLI defaults."
