@@ -8,7 +8,8 @@
              "-server"]
   :main elle_cli.cli
   :aot [elle_cli.cli]
-  :dependencies [[org.clojure/clojure "1.10.3"]
+  :test-paths ["test"]
+  :dependencies [[org.clojure/clojure "1.12.5"]
                  [org.clojure/tools.cli "1.0.206"]
                  [org.clojure/tools.logging "1.1.0"]
                  [org.clojure/data.json "2.4.0"]

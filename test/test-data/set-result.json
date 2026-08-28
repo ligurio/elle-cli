@@ -1,0 +1,11 @@
+{"ok-count":3,
+ "valid?":true,
+ "lost-count":0,
+ "lost":"#{}",
+ "acknowledged-count":3,
+ "recovered":"#{}",
+ "ok":"#{0..2}",
+ "attempt-count":3,
+ "unexpected":"#{}",
+ "unexpected-count":0,
+ "recovered-count":0}

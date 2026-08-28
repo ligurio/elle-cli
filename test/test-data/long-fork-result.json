@@ -1,0 +1,17 @@
+{"reads-count":2,
+ "early-read-count":0,
+ "late-read-count":0,
+ "valid?":false,
+ "forks":
+ [[{"index":3,
+    "time":-1,
+    "type":"ok",
+    "process":null,
+    "f":"read",
+    "value":[["r", 2, 1], ["r", 0, 1], ["r", 1, null]]},
+   {"index":1,
+    "time":-1,
+    "type":"ok",
+    "process":null,
+    "f":"read",
+    "value":[["r", 0, 1], ["r", 1, 1], ["r", 2, null]]}]]}

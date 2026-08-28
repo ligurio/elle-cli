@@ -1,0 +1,10 @@
+{:index 1, :type :invoke, :process 2, :value [[ :append 4 2] [ :append 5 5] ]}
+{:index 2, :type :invoke, :process 0, :value [[ :r 2 nil] [ :r 3 nil] [ :append 4 0] ]}
+{:index 3, :type :invoke, :process 1, :value [[ :append 3 1] [ :append 2 4] [ :r 4 nil] ]}
+{:index 4, :type :ok, :process 2, :value [[ :append 4 2] [ :append 5 5] ]}
+{:index 5, :type :invoke, :process 2, :value [[ :append 2 8] ]}
+{:index 6, :type :ok, :process 1, :value [[ :append 3 1] [ :append 2 4] [ :r 4 [ ]] ]}
+{:index 7, :type :invoke, :process 1, :value [[ :append 3 7] [ :append 4 10] ]}
+{:index 8, :type :ok, :process 0, :value [[ :r 2 [ ]] [ :r 3 [ ]] [ :append 4 0] ]}
+{:index 9, :type :ok, :process 2, :value [[ :append 2 8] ]}
+{:index 10, :type :ok, :process 1, :value [[ :append 3 7] [ :append 4 10] ]}
