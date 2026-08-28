@@ -44,13 +44,9 @@ jobs:
 
     - run: lein -v
 
-    - run: lein deps
+    - run: make check
 
-    - run: lein check
-
-    - run: lein compile
-
-    - run: lein uberjar
+    - run: make build
 
     - name: Setup test dependencies on Ubuntu
       run: sudo apt install -y graphviz
@@ -60,10 +56,5 @@ jobs:
       run: brew install graphviz
       if: ${{ matrix.operating-system == 'macOS-latest' }}
 
-    - name: Run regression tests on Ubuntu
-      run: sh ./test.sh
-      if: ${{ matrix.operating-system == 'ubuntu-latest' }}
-
-    - name: Run regression tests on macOS
-      run: sh ./test.sh
-      if: ${{ matrix.operating-system == 'macOS-latest' }}
+    - name: Run regression tests
+      run: make test
