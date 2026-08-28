@@ -8,6 +8,7 @@
              "-server"]
   :main elle_cli.cli
   :aot [elle_cli.cli]
+  :plugins [[lein-cloverage "1.2.4"]]
   :test-paths ["test"]
   :dependencies [[org.clojure/clojure "1.12.5"]
                  [org.clojure/tools.cli "1.0.206"]
