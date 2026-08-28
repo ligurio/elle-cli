@@ -1,0 +1,6 @@
+{"valid?":false,
+ "all-count":0,
+ "some-count":1,
+ "none-count":0,
+ "bad-count":1,
+ "bad":[[0, ["0_3", "0_2", null, null]]]}
