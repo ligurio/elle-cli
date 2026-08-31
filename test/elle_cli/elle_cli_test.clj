@@ -23,6 +23,8 @@
                    "rethink-fail-minimal"
                    "rethink-fail-smaller"
                    "memstress3-9"]
+   "comments"     [; A committed read fails to observe an earlier completed write.
+                   "comments"]
    "mutex"        ["etcd"
                    "hazelcast"]
    "rw-register"  ["rw-register"]
