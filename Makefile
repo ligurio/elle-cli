@@ -1,6 +1,6 @@
 LEIN ?= lein
 
-.PHONY: all build check coverage test clean
+.PHONY: all build check coverage deps test clean
 
 # Dependency namespaces to instrument on top of the project's own
 # source, so that coverage for Elle, Knossos, and Jepsen is
@@ -30,6 +30,9 @@ COVERAGE_NS += knossos.model
 COVERAGE_NS += knossos.op
 
 all: build
+
+deps:
+	$(LEIN) deps
 
 build:
 	$(LEIN) deps
