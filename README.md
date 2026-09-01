@@ -51,9 +51,9 @@ $ cd elle-cli
 $ lein deps
 $ lein uberjar
 Compiling elle_cli.cli
-Created /home/sergeyb/sources/elle-cli/target/elle-cli-0.1.10.jar
-Created /home/sergeyb/sources/elle-cli/target/elle-cli-0.1.10-standalone.jar
-$ java -jar target/elle-cli-0.1.10-standalone.jar --model rw-register histories/elle/rw-register.json
+Created /home/sergeyb/sources/elle-cli/target/elle-cli-0.1.11.jar
+Created /home/sergeyb/sources/elle-cli/target/elle-cli-0.1.11-standalone.jar
+$ java -jar target/elle-cli-0.1.11-standalone.jar --model rw-register histories/elle/rw-register.json
 histories/elle/rw-register.json       true
 ```
 
