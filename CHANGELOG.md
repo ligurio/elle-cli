@@ -22,7 +22,7 @@ change log follows the conventions of
 
 - Publishing GHA workflow.
 
-[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.10...0.1.11
+[0.1.11]: https://github.com/ligurio/elle-cli/compare/0.1.10...0.1.11
 
 ## [0.1.10] - 2025-09-01
 
