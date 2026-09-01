@@ -31,6 +31,13 @@ Object Notation)](https://www.json.org/) formats and can be successfully used
 with histories produced by Jepsen tests in EDN format as well as with other
 Jepsen-similar frameworks that produce histories in JSON format.
 
+## Requirements
+
+- Java 21 or later. The bundled Jepsen 0.3.11 ships classes that
+  reference `java.util.SequencedCollection`, a class introduced in
+  Java 21, so building or running on older Java versions fails
+  with a `ClassNotFoundException`.
+
 ## Usage
 
 If you have a file with history written in EDN or JSON format, either as a

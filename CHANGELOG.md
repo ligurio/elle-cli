@@ -14,6 +14,8 @@ change log follows the conventions of
 
 ### Fixed
 
+- Publishing GHA workflow.
+
 [Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.10...HEAD
 
 ## [0.1.10] - 2025-09-01
