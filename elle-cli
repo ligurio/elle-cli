@@ -2,7 +2,7 @@
 
 set -eu
 
-ver="0.1.10"
+ver="0.1.11"
 
 options=$*
 if test -z "$options"; then
