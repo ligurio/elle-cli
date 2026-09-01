@@ -8,6 +8,18 @@ change log follows the conventions of
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Fixed
+
+[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.10...HEAD
+
+## [0.1.10] - 2025-09-01
+
+### Added
+
 - An option `--output` that accepts `text` or `json`. Default is `text`.
 
 ### Changed
@@ -25,7 +37,7 @@ change log follows the conventions of
 
 - A `bank` checker (#82).
 
-[Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.9...HEAD
+[0.1.10]: https://github.com/ligurio/elle-cli/compare/0.1.9...0.1.10
 
 ## [0.1.9] - 2025-08-27
 
