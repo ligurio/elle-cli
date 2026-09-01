@@ -273,10 +273,14 @@
           case cases]
     (if (contains? skipped-cases case)
       (println "SKIPPED:" model ":" case)
-      (testing (str model ": " case)
-        (assert-result model case (check-case model case))))))
+      (do (println "Running:" model ":" case)
+          (flush)
+          (testing (str model ": " case)
+            (assert-result model case (check-case model case)))))))
 
 (deftest check-options
   (doseq [{:keys [model case opts]} option-cases]
+    (println "Running:" model ":" case "with options" (pr-str opts))
+    (flush)
     (testing (str model ": " case " with options " (pr-str opts))
       (assert-result model case (check-case model case opts)))))
