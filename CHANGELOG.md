@@ -18,6 +18,12 @@ change log follows the conventions of
 
 ### Fixed
 
+- Validate that a history matches the selected model before
+  running a checker and report a clear error otherwise, instead
+  of an obscure exception from deep inside a checker (e.g. when
+  checking a `list-append` history with the `rw-register` model)
+  (#103).
+
 [Unreleased]: https://github.com/ligurio/elle-cli/compare/0.1.11...HEAD
 
 ## [0.1.11]

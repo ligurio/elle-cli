@@ -96,6 +96,141 @@
   {"edn"        read-edn-history
    "json"       read-json-history})
 
+(def model-specs
+  "A description of the operation rows each model can check, used to detect a
+  mis-selected model before running a checker. Every client operation in a
+  history must conform to the spec of the requested model:
+
+    :shape  The expected shape of an operation row.
+            - :txn  - :f is :txn, :value is a list of micro-operations [f k v].
+            - :mops - :f is an operation over lists, and :value is a list of
+                      micro-operations [f k v].
+            - :flat - :f is an operation with a scalar (non-transactional)
+                      value.
+    :f      (optional) A set of allowed operation keys.
+    :mops   (optional) A set of allowed micro-operation keys.
+
+  History rows produced by a nemesis (:process :nemesis, e.g. :pause, :resume,
+  :start, :stop) are not client operations and are ignored, as checkers do."
+  {"rw-register"  {:shape :txn
+                   :mops #{:r :w}}
+   "list-append"  {:shape :txn
+                   :mops #{:r :append}}
+   "long-fork"    {:shape :mops
+                   :f #{:read :write}
+                   :mops #{:r :w}}
+   "cas-register" {:shape :flat
+                   :f #{:read :write :cas}}
+   "mutex"        {:shape :flat
+                   :f #{:acquire :release}}
+   "bank"         {:shape :flat
+                   :f #{:read :transfer}}
+   "comments"     {:shape :flat
+                   :f #{:read :write}}
+   "sequential"   {:shape :flat
+                   :f #{:add :read}}
+   "counter"      {:shape :flat
+                   :f #{:add :read}}
+   "set"          {:shape :flat
+                   :f #{:add :read}}
+   "set-full"     {:shape :flat
+                   :f #{:add :read}}})
+
+(defn mop-rows
+  "Given an operation, returns its sequence of micro-operation rows [f k v] if
+  the operation is transactional (:f :txn) or its value is otherwise a list of
+  micro-operation rows; nil otherwise."
+  [op]
+  (let [v (:value op)]
+    (cond
+      (= :txn (:f op))
+      (when (sequential? v) v)
+
+      (and (sequential? v)
+           (seq v)
+           (sequential? (first v))
+           (not (map? (first v))))
+      v)))
+
+(defn row-family
+  "Classifies an operation row as :txn, :mops or :flat."
+  [op]
+  (let [f (:f op)]
+    (cond
+      (= :txn f) :txn
+      ; Elle histories often omit the :f :txn key on transaction rows.
+      (and (nil? f) (mop-rows op)) :txn
+      (mop-rows op) :mops
+      :else :flat)))
+
+(defn shape-str
+  "A short human description of an operation shape."
+  [shape]
+  (case shape
+    :txn  "a transaction (:f :txn) over micro-operations"
+    :mops "an operation whose :value is a list of micro-operations"
+    :flat "a non-transactional operation with a scalar value"))
+
+(defn row-err
+  "Returns nil if the operation row conforms to the model spec, or a string
+  describing why the row cannot be checked with that model."
+  [{:keys [shape f mops]} op]
+  (let [ix (:index op)]
+    (cond
+      ; The row doesn't have the shape this model checks.
+      (not= shape (row-family op))
+      (str "op at :index " ix " is "
+           (shape-str (row-family op))
+           ", but this model expects "
+           (shape-str shape))
+
+      ; Flat and micro-operation models restrict operation keys.
+      (and f (not (contains? f (:f op))))
+      (str "op at :index " ix " uses :f " (pr-str (:f op))
+           ", which is not supported by this model")
+
+      ; Transactional models restrict keys of micro-operations.
+      (and mops (mop-rows op))
+      (let [bad (first (remove mops (map first (mop-rows op))))]
+        (when bad
+          (str "op at :index " ix " contains a micro-operation with key "
+               (pr-str bad) ", which is not supported by this model")))
+
+      :else nil)))
+
+(defn fits-model?
+  "True if every client operation in the history conforms to the model spec."
+  [model-name history]
+  (let [spec (get model-specs model-name)]
+    (every? #(nil? (row-err spec %)) history)))
+
+(defn validate-model-ops
+  "Checks that client operations in a history have the rows the requested
+  model can check. Throws an informative ex-info if a row does not fit, so a
+  mis-selected model is reported with a clear error (and a hint about the
+  right model) instead of an obscure exception deep inside a checker."
+  [model-name history]
+  (when-let [spec (get model-specs model-name)]
+    (let [client-history (h/client-ops history)
+          bad (first (keep #(row-err spec %) client-history))]
+      (when bad
+        (let [candidates (->> (keys model-specs)
+                              (remove #{model-name})
+                              (filter #(fits-model? % client-history))
+                              sort)
+              hint (when (seq candidates)
+                     (str ". This history looks like a "
+                          (str/join " or " (map #(str "\"" % "\"") candidates))
+                          " workload"))
+              msg (str "Model \"" model-name "\" does not match this history: "
+                       bad
+                       hint
+                       " - wrong model selected?")]
+          (throw (ex-info msg
+                          {:model-mismatch  true
+                           :model           model-name
+                           :candidate-models (vec candidates)})))))))
+
 (def opts
   "tools.cli options"
 
@@ -196,6 +331,8 @@
   "Check a specified history according to model specified by model name"
   [model-name history options]
 
+  (validate-model-ops model-name history)
+
   (let [checker-fn (get models model-name)]
     (case model-name
        ; Operations in a histories passed to a Knossos additionally normalized,
@@ -265,6 +402,15 @@
           (println filepath "\t" validness))))
 
       (System/exit ({true 1 false 0} (lazy-contains? (vals @results) false))))
+
+    (catch clojure.lang.ExceptionInfo e
+      (if (true? (:model-mismatch (ex-data e)))
+        (do (binding [*out* *err*]
+              (println (.getMessage e)))
+            (System/exit 1))
+        (do (println)
+            (.printStackTrace e)
+            (System/exit 255))))
 
     (catch Throwable t
       (println)

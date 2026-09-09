@@ -302,3 +302,25 @@
     (flush)
     (testing (str model ": " case " with options " (pr-str opts))
       (assert-result model case (check-case model case opts)))))
+
+(deftest check-model-mismatch
+  (testing "rw-register cannot check a list-append history"
+    (is (thrown-with-msg?
+          clojure.lang.ExceptionInfo
+          #"list-append"
+          (check-case "rw-register" "list-append-gh-30"))))
+  (testing "list-append cannot check a rw-register history"
+    (is (thrown-with-msg?
+          clojure.lang.ExceptionInfo
+          #"rw-register"
+          (check-case "list-append" "rw-register"))))
+  (testing "rw-register cannot check a flat cas-register history"
+    (is (thrown-with-msg?
+          clojure.lang.ExceptionInfo
+          #"cas-register"
+          (check-case "rw-register" "bad-analysis"))))
+  (testing "cas-register cannot check a transactional rw-register history"
+    (is (thrown-with-msg?
+          clojure.lang.ExceptionInfo
+          #"rw-register"
+          (check-case "cas-register" "rw-register")))))
