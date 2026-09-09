@@ -7,6 +7,7 @@
             [clojure.java.io :as io]
             [clojure.data.json :as json]
             [jepsen.history :as h]
+            [clojure.tools.cli :as tools-cli]
             [elle_cli.cli :as cli]))
 
 (def data-dir
@@ -274,6 +275,16 @@
                                               analysis))))
           (is (.exists expected)
               (str "generated expected result: " (.getPath expected)))))))
+
+(deftest check-version-option
+  (testing "--version is parsed without errors"
+    (let [{:keys [options errors]} (tools-cli/parse-opts ["--version"] cli/opts)]
+      (is (nil? errors))
+      (is (true? (:version options)))))
+  (testing "version is reported in the MAJOR.MINOR.PATCH format"
+    (let [v (cli/version)]
+      (is (some? v))
+      (is (re-matches #"\d+\.\d+\.\d+" v)))))
 
 (deftest check-histories
   (doseq [[model cases] model-cases

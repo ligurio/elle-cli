@@ -8,6 +8,8 @@ change log follows the conventions of
 
 ### Added
 
+- An option `--version` that prints the elle-cli version and exits.
+
 ### Changed
 
 - Report a proper error for an unknown model name (#100).
