@@ -42,6 +42,13 @@
     h
     ))
 
+(defn version
+  "Return the elle-cli version from the pom.properties embedded by
+  Leiningen at build time."
+  []
+  (when-let [r (io/resource "META-INF/maven/elle-cli/elle-cli/pom.properties")]
+    (second (re-find #"(?m)^version=(.*)$" (slurp r)))))
+
 (defn vl
   [v]
   (if (string? v)
@@ -109,6 +116,8 @@
     :validate [#{:text :json} "Must be one of text, json"]]
    ["-h" "--help"
     "(General) Print usage."]
+   [nil "--version"
+    "(General) Print version and exit."]
 
    ; Elle-specific options.
    ["-c" "--consistency-models CONSISTENCY-MODELS"
@@ -230,6 +239,10 @@
         (doseq [e errors]
           (println e))
         (System/exit 1))
+
+      (when (:version options)
+        (println (str "elle-cli " (version)))
+        (System/exit 0))
 
       (if (or (nil? model-name) (true? help)) (
           (println (usage summary))
