@@ -93,9 +93,9 @@
   "tools.cli options"
 
    ; General options.
-  [["-m" "--model MODEL"
+  [   ["-m" "--model MODEL"
     "(General) A name of consistency model for checking."
-    :validate [identity
+    :validate [#(contains? models %)
                (str "Must be one of " (str/join ", " (sort (keys models))))]]
    ["-f" "--format FORMAT"
     "(General) Format of file with history. Either 'edn' or 'json'."

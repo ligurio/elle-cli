@@ -10,6 +10,8 @@ change log follows the conventions of
 
 ### Changed
 
+- Report a proper error for an unknown model name (#100).
+
 ### Deprecated
 
 ### Fixed
